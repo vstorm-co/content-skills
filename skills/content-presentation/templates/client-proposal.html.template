@@ -1,0 +1,195 @@
+# Client Proposal Template (Raw HTML)
+
+## Format: 15-25 slides | Framework: Raw HTML (single file) | Duration: Async read or 30 min meeting
+
+---
+
+## Why Raw HTML for Proposals
+
+Proposals get emailed, viewed on phones, opened by non-technical clients, and archived. A single HTML file with no dependencies ensures it works everywhere, forever. No "install this" or "open in Chrome." Double-click and read.
+
+---
+
+## Narrative Arc
+
+This is not a presentation -- it is a persuasion document. The reader should finish with confidence that you understand their problem, have a credible plan, and are worth the investment.
+
+**Problem** (slides 1-4) -- Prove you understand their world.
+**Solution** (slides 5-9) -- Show your approach, not just your capabilities.
+**Plan** (slides 10-15) -- Timeline, milestones, team, deliverables.
+**Investment** (slides 16-18) -- Pricing, terms, next steps.
+**Appendix** (slides 19-25, optional) -- Case studies, team bios, methodology details.
+
+---
+
+## Slide Structure
+
+### Slide 1: Cover
+**Content**: Client's company name (not yours -- this is about them), project title, your company name, date.
+**Design**: Clean, professional. Client logo if you have it. Your logo small in the corner.
+
+```html
+<section class="slide cover-slide">
+  <div class="client-logo"><!-- client logo SVG --></div>
+  <h1>[Project Title]</h1>
+  <p class="prepared-for">Prepared for [Client Company]</p>
+  <p class="prepared-by">[Your Company] | [Date]</p>
+  <div class="your-logo"><!-- your logo SVG --></div>
+</section>
+```
+
+---
+
+### Slide 2: Executive Summary
+**Content**: The entire proposal in 3-4 sentences. A busy executive should be able to read this slide alone and understand the ask.
+**Speaker Notes**: If presenting live, read this almost verbatim. It sets the frame for everything that follows.
+
+---
+
+### Slide 3: Understanding Your Challenge
+**Content**: Restate the client's problem in their own words. Reference specific things they said in discovery calls or the RFP. Use quotes if you have them.
+**Purpose**: Prove you listened. This slide builds trust faster than any capability claim.
+
+---
+
+### Slide 4: The Impact of Inaction
+**Content**: What happens if they do nothing? Cost, competitive risk, team burnout, opportunity cost. Quantify where possible.
+**Purpose**: Create urgency without being manipulative. Stick to facts.
+
+---
+
+### Slide 5: Our Approach
+**Content**: High-level methodology in 3-4 phases. Each phase: name, one-sentence description, key deliverable.
+**Design**: Process flow diagram. Horizontal steps with arrows. Each step is a box with phase name and timeframe.
+
+---
+
+### Slide 6-8: Phase Details (one slide per major phase)
+**Content per slide**: Phase name, objectives, activities, deliverables, duration.
+**Design**: Left side is a checklist of activities. Right side is the key deliverable mockup or description.
+
+---
+
+### Slide 9: What Makes This Approach Different
+**Content**: Your differentiator applied to this specific project. Not "we have 20 years of experience" -- instead "we will do [specific thing] that your previous vendor did not."
+**Purpose**: This is your competitive advantage slide, tailored to the client.
+
+---
+
+### Slide 10: Timeline
+**Content**: Gantt-style timeline or horizontal bar chart. Phases mapped to weeks/months. Key milestones marked.
+**Design**: Use SVG for the timeline graphic. Inline it directly.
+
+```html
+<section class="slide">
+  <h2>Timeline</h2>
+  <svg viewBox="0 0 1200 400" class="timeline">
+    <!-- Phase bars -->
+    <rect x="50" y="50" width="250" height="50" fill="var(--accent)" rx="4" />
+    <text x="175" y="82" text-anchor="middle" fill="white" font-size="16">Discovery</text>
+    <!-- ... more phases ... -->
+    <!-- Milestone markers -->
+    <circle cx="300" cy="180" r="8" fill="var(--accent)" />
+    <text x="300" y="210" text-anchor="middle" font-size="14">Kickoff</text>
+  </svg>
+</section>
+```
+
+---
+
+### Slide 11: Deliverables
+**Content**: Numbered list of every deliverable with format (document, code, workshop, etc.). Be specific.
+**Purpose**: Eliminate ambiguity about what they receive.
+
+---
+
+### Slide 12: Your Team
+**Content**: 2-4 people who will work on this project. Photo (base64-encoded), name, role on this project, one-line relevant credential.
+**Design**: Grid layout. Keep it compact.
+
+---
+
+### Slide 13: How We Work Together
+**Content**: Communication cadence (weekly standups, bi-weekly reports), tools (Slack, email, Jira), escalation path, decision-making process.
+**Purpose**: Reduce the anxiety of "what will this actually be like day-to-day."
+
+---
+
+### Slide 14: Case Study
+**Content**: One relevant case study. The problem, what you did, the measurable result. Keep it to one slide.
+**Design**: Quote from the client, a key metric, and a brief narrative.
+
+---
+
+### Slide 15: Another Case Study (Optional)
+**Content**: A second case study if it adds credibility. Different industry or problem type to show range.
+
+---
+
+### Slide 16: Investment
+**Content**: Total price, broken down by phase or deliverable. Payment terms. What is included and what is not.
+**Design**: Clean table. No hidden costs. If there are optional add-ons, list them separately.
+
+```html
+<section class="slide">
+  <h2>Investment</h2>
+  <table class="pricing-table">
+    <thead>
+      <tr><th>Phase</th><th>Duration</th><th>Investment</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Discovery & Strategy</td><td>2 weeks</td><td>$[X]</td></tr>
+      <tr><td>Design & Build</td><td>6 weeks</td><td>$[X]</td></tr>
+      <tr><td>Testing & Launch</td><td>2 weeks</td><td>$[X]</td></tr>
+    </tbody>
+    <tfoot>
+      <tr><td colspan="2"><strong>Total</strong></td><td><strong>$[Total]</strong></td></tr>
+    </tfoot>
+  </table>
+</section>
+```
+
+---
+
+### Slide 17: Terms and Assumptions
+**Content**: Payment schedule, key assumptions (client provides X by Y date, access to Z system), out-of-scope items, change order process.
+**Purpose**: Protect both parties. Clear expectations prevent disputes.
+
+---
+
+### Slide 18: Next Steps
+**Content**: 3 concrete actions: (1) Sign SOW by [date], (2) Kickoff call on [date], (3) First deliverable by [date].
+**Design**: Numbered list with dates. Make it easy to say yes.
+
+---
+
+### Slides 19-25: Appendix (Optional)
+Include as needed:
+- Detailed team bios
+- Methodology deep-dive
+- Additional case studies
+- Technical architecture overview
+- References and testimonials
+- Company overview (keep this last -- they already know who you are if they are reading your proposal)
+
+---
+
+## Design Notes for Raw HTML Proposals
+
+- Use a **light theme** -- proposals are often printed or read in bright offices.
+- **Font size matters more** than in live presentations -- readers control zoom, so optimize for readability at default zoom.
+- **Tables** should have clear borders and alternating row backgrounds for pricing sections.
+- **Logo placement**: Client logo on cover, your logo in the footer of every slide.
+- **Color restraint**: Brand primary for headings and accents only. Body text is dark gray, not black.
+- Include a **table of contents** as Slide 2 if the proposal exceeds 20 slides (since this is async, readers navigate non-linearly).
+
+---
+
+## Usage
+
+1. Copy the raw HTML skeleton from `frameworks/raw-html.md`.
+2. Add slides following this structure.
+3. Replace all `[bracketed]` placeholders.
+4. Base64-encode any images and embed inline.
+5. Test in Chrome, Safari, Firefox, and on mobile.
+6. Email as attachment or host on a private URL.

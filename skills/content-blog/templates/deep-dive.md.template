@@ -1,0 +1,77 @@
+# [Title: {Topic}: A Deep Dive into {Specific Aspect}]
+
+<!-- HOOK: Why should the reader care about this technical topic? -->
+
+{Open with a concrete scenario, a surprising finding, or a question that motivates the deep dive. The reader should understand the stakes before you go deep.}
+
+---
+
+## Background
+
+{Establish the context the reader needs to follow the analysis. Cover:}
+
+- What the technology/concept is at a high level
+- Why it exists (the problem it solves)
+- Key terms and definitions the reader will need
+- Where this topic sits in the broader landscape
+
+{Calibrate depth to the audience: link to introductory resources for beginners, but do not re-explain fundamentals that your target audience already knows.}
+
+---
+
+## How It Works
+
+{The core technical analysis. This is the meat of the post.}
+
+### {Subsection 1: Component/Layer/Phase}
+
+{Detailed technical explanation. Use:}
+
+- Code examples with annotations
+- Architecture diagrams (describe or include)
+- Data flow descriptions
+- Performance characteristics
+
+```{language}
+{Annotated code example showing the concept in action}
+```
+
+{Explain what the code demonstrates and what the reader should notice.}
+
+### {Subsection 2: Component/Layer/Phase}
+
+{Continue the analysis. Build on the previous subsection.}
+
+{Include comparisons where useful:}
+
+| Approach | Tradeoff | When to Use |
+|---|---|---|
+| {Approach A} | {Tradeoff} | {Use case} |
+| {Approach B} | {Tradeoff} | {Use case} |
+
+### {Subsection 3: Component/Layer/Phase}
+
+{Go deeper where the topic demands it. This is where the "deep dive" earns its name.}
+
+{Address edge cases, failure modes, and non-obvious behavior.}
+
+---
+
+## Practical Implications
+
+{Translate the technical analysis into practical advice:}
+
+- When should the reader use this approach?
+- When should they avoid it?
+- What are the performance / cost / complexity trade-offs?
+- What are the common mistakes people make?
+
+---
+
+## What's Next
+
+{Where is this technology/approach headed? What are the open questions?}
+
+{Point the reader toward further resources: papers, repos, talks, related posts.}
+
+{End with an actionable next step: "Benchmark it against your current approach," "Read the source code for X," "Try implementing Y."}

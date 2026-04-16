@@ -1,0 +1,29 @@
+# Teardown / Analysis Thread Template
+
+## Tweet 1 (Hook)
+{Bold claim or surprising insight from the teardown. Lead with your most interesting finding, not the thing you're analyzing.}
+
+I broke down {thing being analyzed}. Here's what I found:
+
+## Tweet 2 (What We're Analyzing)
+{Introduce the subject: product, company, codebase, strategy, etc. Brief context: why it's worth analyzing.}
+
+## Tweet 3-N (Breakdown Points)
+{Number}. {Finding or observation title}
+
+{2-3 sentences explaining what you found, why it matters, and what the reader should notice.}
+
+{Include specifics: screenshots, data, code snippets, comparisons.}
+
+<!-- Repeat for each finding. Aim for 4-7 breakdown points. -->
+<!-- Each tweet should deliver a standalone insight. -->
+
+## Tweet N+1 (Synthesis)
+The pattern across all of this:
+
+{1-2 sentences connecting the findings into a larger insight. This is the meta-takeaway.}
+
+## Final Tweet (CTA)
+{What should the reader do with this analysis? Apply it to their own work? Look at a related example? Share their own teardown?}
+
+{Optional: link to a longer writeup or related resource.}

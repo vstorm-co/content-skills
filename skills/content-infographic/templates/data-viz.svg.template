@@ -1,0 +1,237 @@
+# Data Visualization SVG Template
+
+## Overview
+
+Template for quantitative data visualizations: bar charts, line charts, donut charts, and metric grids. All examples use CSS custom properties for easy brand retheming.
+
+---
+
+## Base SVG Structure
+
+```svg
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" role="img">
+  <title>[Infographic Title]</title>
+  <desc>[Plain-text description of the data for screen readers]</desc>
+
+  <style>
+    :root {
+      --accent: #E94560;
+      --secondary: #16213E;
+      --bg: #FFFFFF;
+      --text: #333333;
+      --muted: #888888;
+      --grid: #E5E5E5;
+      --font: 'Inter', -apple-system, sans-serif;
+    }
+
+    text { font-family: var(--font); }
+    .title { font-size: 28px; font-weight: 700; fill: var(--secondary); }
+    .subtitle { font-size: 16px; fill: var(--muted); }
+    .label { font-size: 14px; fill: var(--text); }
+    .value { font-size: 16px; font-weight: 600; fill: var(--text); }
+    .axis-label { font-size: 12px; fill: var(--muted); }
+    .source { font-size: 11px; fill: var(--muted); }
+  </style>
+
+  <!-- Background -->
+  <rect width="1200" height="800" fill="var(--bg)" />
+
+  <!-- Title Area (top 100px) -->
+  <text x="60" y="50" class="title">[Key Insight as Title]</text>
+  <text x="60" y="75" class="subtitle">[Context: date range, sample size, etc.]</text>
+
+  <!-- Chart Area (y: 120 to 700) -->
+  <!-- Charts go here -->
+
+  <!-- Source (bottom) -->
+  <text x="60" y="780" class="source">Source: [data source] | [date]</text>
+
+  <!-- Brand Logo (bottom-right) -->
+  <g transform="translate(1100, 740)" opacity="0.5">
+    <!-- logo-mark SVG contents -->
+  </g>
+</svg>
+```
+
+---
+
+## Bar Chart (Vertical)
+
+```svg
+<!-- Y-axis gridlines -->
+<line x1="100" y1="200" x2="1100" y2="200" stroke="var(--grid)" stroke-width="1" />
+<line x1="100" y1="325" x2="1100" y2="325" stroke="var(--grid)" stroke-width="1" />
+<line x1="100" y1="450" x2="1100" y2="450" stroke="var(--grid)" stroke-width="1" />
+<line x1="100" y1="575" x2="1100" y2="575" stroke="var(--grid)" stroke-width="1" />
+
+<!-- Y-axis labels -->
+<text x="90" y="205" class="axis-label" text-anchor="end">100%</text>
+<text x="90" y="330" class="axis-label" text-anchor="end">75%</text>
+<text x="90" y="455" class="axis-label" text-anchor="end">50%</text>
+<text x="90" y="580" class="axis-label" text-anchor="end">25%</text>
+<text x="90" y="705" class="axis-label" text-anchor="end">0%</text>
+
+<!-- Baseline -->
+<line x1="100" y1="700" x2="1100" y2="700" stroke="var(--muted)" stroke-width="1" />
+
+<!-- Bars -->
+<!-- Bar 1: 75% height = 375px from baseline -->
+<rect x="150" y="325" width="120" height="375" fill="var(--accent)" rx="4" />
+<text x="210" y="310" class="value" text-anchor="middle">75%</text>
+<text x="210" y="730" class="label" text-anchor="middle">[Category 1]</text>
+
+<!-- Bar 2: 60% -->
+<rect x="350" y="400" width="120" height="300" fill="var(--accent)" opacity="0.7" rx="4" />
+<text x="410" y="385" class="value" text-anchor="middle">60%</text>
+<text x="410" y="730" class="label" text-anchor="middle">[Category 2]</text>
+
+<!-- Bar 3: 45% -->
+<rect x="550" y="475" width="120" height="225" fill="var(--accent)" opacity="0.5" rx="4" />
+<text x="610" y="460" class="value" text-anchor="middle">45%</text>
+<text x="610" y="730" class="label" text-anchor="middle">[Category 3]</text>
+
+<!-- Add more bars as needed -->
+```
+
+---
+
+## Horizontal Bar Chart
+
+Better when category labels are long:
+
+```svg
+<!-- Category labels on the left, bars extending right -->
+<text x="200" y="220" class="label" text-anchor="end">[Long Category Name 1]</text>
+<rect x="210" y="200" width="600" height="30" fill="var(--accent)" rx="4" />
+<text x="820" y="222" class="value">75%</text>
+
+<text x="200" y="280" class="label" text-anchor="end">[Long Category Name 2]</text>
+<rect x="210" y="260" width="480" height="30" fill="var(--accent)" opacity="0.7" rx="4" />
+<text x="700" y="282" class="value">60%</text>
+
+<text x="200" y="340" class="label" text-anchor="end">[Long Category Name 3]</text>
+<rect x="210" y="320" width="360" height="30" fill="var(--accent)" opacity="0.5" rx="4" />
+<text x="580" y="342" class="value">45%</text>
+```
+
+---
+
+## Line Chart
+
+```svg
+<!-- Grid -->
+<line x1="100" y1="200" x2="1100" y2="200" stroke="var(--grid)" stroke-width="1" />
+<line x1="100" y1="350" x2="1100" y2="350" stroke="var(--grid)" stroke-width="1" />
+<line x1="100" y1="500" x2="1100" y2="500" stroke="var(--grid)" stroke-width="1" />
+<line x1="100" y1="650" x2="1100" y2="650" stroke="var(--grid)" stroke-width="1" />
+
+<!-- Line path -->
+<polyline
+  points="150,550 300,500 450,480 600,350 750,300 900,280 1050,200"
+  fill="none"
+  stroke="var(--accent)"
+  stroke-width="3"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+/>
+
+<!-- Area fill (optional, for emphasis) -->
+<polygon
+  points="150,550 300,500 450,480 600,350 750,300 900,280 1050,200 1050,650 150,650"
+  fill="var(--accent)"
+  opacity="0.1"
+/>
+
+<!-- Data points -->
+<circle cx="150" cy="550" r="5" fill="var(--accent)" />
+<circle cx="300" cy="500" r="5" fill="var(--accent)" />
+<circle cx="450" cy="480" r="5" fill="var(--accent)" />
+<circle cx="600" cy="350" r="5" fill="var(--accent)" />
+<circle cx="750" cy="300" r="5" fill="var(--accent)" />
+<circle cx="900" cy="280" r="5" fill="var(--accent)" />
+<circle cx="1050" cy="200" r="5" fill="var(--accent)" />
+
+<!-- X-axis labels -->
+<text x="150" y="690" class="axis-label" text-anchor="middle">Jan</text>
+<text x="300" y="690" class="axis-label" text-anchor="middle">Feb</text>
+<!-- ... more months ... -->
+```
+
+---
+
+## Donut Chart
+
+```svg
+<!-- Donut chart centered at (600, 400), radius 200, hole radius 120 -->
+<g transform="translate(600, 400)">
+  <!-- Segment 1: 45% (162 degrees) -->
+  <path d="M 0,-200 A 200,200 0 0,1 190.2,61.8 L 114.1,37.1 A 120,120 0 0,0 0,-120 Z"
+        fill="var(--accent)" />
+
+  <!-- Segment 2: 30% (108 degrees) -->
+  <path d="M 190.2,61.8 A 200,200 0 0,1 -100,173.2 L -60,103.9 A 120,120 0 0,0 114.1,37.1 Z"
+        fill="var(--secondary)" />
+
+  <!-- Segment 3: 25% (90 degrees) -->
+  <path d="M -100,173.2 A 200,200 0 0,1 0,-200 L 0,-120 A 120,120 0 0,0 -60,103.9 Z"
+        fill="var(--muted)" />
+
+  <!-- Center label -->
+  <text x="0" y="-10" class="title" text-anchor="middle" font-size="36">[Total]</text>
+  <text x="0" y="20" class="subtitle" text-anchor="middle">[unit]</text>
+</g>
+
+<!-- Legend (right side) -->
+<rect x="850" y="300" width="16" height="16" fill="var(--accent)" rx="2" />
+<text x="875" y="313" class="label">[Segment 1] - 45%</text>
+
+<rect x="850" y="330" width="16" height="16" fill="var(--secondary)" rx="2" />
+<text x="875" y="343" class="label">[Segment 2] - 30%</text>
+
+<rect x="850" y="360" width="16" height="16" fill="var(--muted)" rx="2" />
+<text x="875" y="373" class="label">[Segment 3] - 25%</text>
+```
+
+**Note**: Donut chart paths are complex. Calculate arc endpoints based on actual data percentages. Use the SVG arc command (`A`) with correct start/end points.
+
+---
+
+## Metric Grid (Multiple Stats)
+
+For showing 3-4 key metrics in a row:
+
+```svg
+<!-- Metric 1 -->
+<g transform="translate(150, 300)">
+  <text x="0" y="0" font-size="56" font-weight="700" fill="var(--accent)"
+        font-family="var(--font)">47%</text>
+  <text x="0" y="35" class="label">Revenue Growth</text>
+  <text x="0" y="55" class="axis-label">up from 32% last quarter</text>
+</g>
+
+<!-- Metric 2 -->
+<g transform="translate(450, 300)">
+  <text x="0" y="0" font-size="56" font-weight="700" fill="var(--accent)"
+        font-family="var(--font)">2.4M</text>
+  <text x="0" y="35" class="label">Active Users</text>
+  <text x="0" y="55" class="axis-label">+18% month over month</text>
+</g>
+
+<!-- Metric 3 -->
+<g transform="translate(750, 300)">
+  <text x="0" y="0" font-size="56" font-weight="700" fill="var(--accent)"
+        font-family="var(--font)">99.9%</text>
+  <text x="0" y="35" class="label">Uptime</text>
+  <text x="0" y="55" class="axis-label">last 90 days</text>
+</g>
+```
+
+---
+
+## Guidance
+
+- Replace all bracketed `[placeholders]` with real data.
+- Adjust viewBox dimensions for the target context (1080x1080 for social, 1200x800 for blog).
+- Update CSS custom properties in the `<style>` block to match brand colors.
+- Always include a `<title>` and `<desc>` for accessibility.
+- Annotate data directly on the chart when possible -- reduce reliance on legends.

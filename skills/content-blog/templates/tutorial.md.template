@@ -1,0 +1,73 @@
+# [Title: How to {Achieve Outcome} with {Tool/Approach}]
+
+<!-- HOOK: Open with a specific problem the reader faces. No throat-clearing. -->
+
+{1-2 sentences that name the exact problem and why existing solutions fall short.}
+
+<!-- PROBLEM STATEMENT -->
+
+## The Problem
+
+{Describe the problem in concrete terms. Who faces it? When does it surface? What does it cost (time, money, frustration)?}
+
+{Include a brief example scenario so the reader can see themselves in it.}
+
+<!-- PREREQUISITES -->
+
+## What You'll Need
+
+- {Prerequisite 1 -- with version number if applicable}
+- {Prerequisite 2}
+- {Prerequisite 3}
+- Estimated time: {X minutes}
+
+<!-- STEP-BY-STEP GUIDE -->
+
+## Step 1: {Action Verb + What You're Doing}
+
+{Explain what this step accomplishes and why it matters.}
+
+```{language}
+{code example}
+```
+
+{Explain what the code does. Do not assume the reader can parse it without help.}
+
+## Step 2: {Action Verb + What You're Doing}
+
+{Explanation.}
+
+```{language}
+{code example}
+```
+
+{Explanation of output or result.}
+
+## Step 3: {Action Verb + What You're Doing}
+
+{Continue the pattern. Each step should build on the previous one.}
+
+<!-- Add as many steps as needed. Keep each step focused on one action. -->
+
+<!-- COMMON PITFALLS -->
+
+## Common Pitfalls
+
+**{Pitfall 1 name}**
+{What goes wrong, why it happens, and how to fix it.}
+
+**{Pitfall 2 name}**
+{What goes wrong, why it happens, and how to fix it.}
+
+**{Pitfall 3 name}**
+{What goes wrong, why it happens, and how to fix it.}
+
+<!-- CONCLUSION -->
+
+## What You've Built
+
+{Summarize what the reader has accomplished. Be specific about the outcome.}
+
+{Optional: suggest next steps or further reading. Link to related content.}
+
+{End with a concrete CTA: "Clone the repo," "Try it with your own data," "Share your results." Not "Happy coding!"}

@@ -1,0 +1,331 @@
+// Explainer Video Template (2-5 minutes)
+// Landscape format (1920x1080) optimized for YouTube, product walkthroughs, tutorials
+// Structure: Hook -> Context -> Sections (N) -> Recap -> CTA
+
+import React from "react";
+import {
+  AbsoluteFill,
+  Sequence,
+  Series,
+  useCurrentFrame,
+  useVideoConfig,
+  spring,
+  interpolate,
+  Easing,
+  Img,
+  staticFile,
+} from "remotion";
+import { theme } from "../theme";
+
+// -- Props Interface --
+
+interface Section {
+  title: string;
+  body: string;
+  visual?: string; // path to diagram or illustration
+}
+
+interface ExplainerProps {
+  title: string;
+  subtitle: string;
+  hookNarration: string;
+  sections: Section[];
+  ctaText: string;
+  brandColor?: string;
+  logoSrc?: string;
+}
+
+// -- Scene Components --
+
+const TitleCard: React.FC<{
+  title: string;
+  subtitle: string;
+  brandColor: string;
+  logoSrc?: string;
+}> = ({ title, subtitle, brandColor, logoSrc }) => {
+  const frame = useCurrentFrame();
+  const { fps, width } = useVideoConfig();
+
+  const logoSpring = spring({ frame, fps, config: { damping: 15 } });
+  const titleSpring = spring({ frame: frame - 10, fps, config: { damping: 12 } });
+  const subtitleSpring = spring({ frame: frame - 20, fps, config: { damping: 12 } });
+
+  return (
+    <AbsoluteFill
+      style={{
+        backgroundColor: theme.colors.background,
+        justifyContent: "center",
+        alignItems: "center",
+        padding: 120,
+      }}
+    >
+      {logoSrc && (
+        <Img
+          src={staticFile(logoSrc)}
+          style={{
+            width: 64,
+            height: 64,
+            marginBottom: 40,
+            opacity: logoSpring,
+            transform: `scale(${logoSpring})`,
+          }}
+        />
+      )}
+
+      <h1
+        style={{
+          fontSize: width * 0.04,
+          fontFamily: theme.fonts.heading,
+          fontWeight: 800,
+          color: theme.colors.text,
+          textAlign: "center",
+          margin: 0,
+          opacity: titleSpring,
+          transform: `translateY(${(1 - titleSpring) * 30}px)`,
+        }}
+      >
+        {title}
+      </h1>
+
+      <div
+        style={{
+          width: 60,
+          height: 4,
+          backgroundColor: brandColor,
+          margin: "24px 0",
+          opacity: subtitleSpring,
+        }}
+      />
+
+      <p
+        style={{
+          fontSize: width * 0.02,
+          fontFamily: theme.fonts.body,
+          color: theme.colors.textMuted,
+          textAlign: "center",
+          margin: 0,
+          opacity: subtitleSpring,
+          transform: `translateY(${(1 - subtitleSpring) * 20}px)`,
+        }}
+      >
+        {subtitle}
+      </p>
+    </AbsoluteFill>
+  );
+};
+
+const SectionScene: React.FC<{
+  section: Section;
+  sectionNumber: number;
+  totalSections: number;
+  brandColor: string;
+}> = ({ section, sectionNumber, totalSections, brandColor }) => {
+  const frame = useCurrentFrame();
+  const { fps, width, height } = useVideoConfig();
+
+  const headerSlide = spring({ frame, fps, config: { damping: 15 } });
+  const contentFade = spring({ frame: frame - 15, fps, config: { damping: 12 } });
+
+  return (
+    <AbsoluteFill style={{ backgroundColor: theme.colors.background }}>
+      {/* Progress bar */}
+      <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: 3 }}>
+        <div
+          style={{
+            width: `${(sectionNumber / totalSections) * 100}%`,
+            height: "100%",
+            backgroundColor: brandColor,
+          }}
+        />
+      </div>
+
+      {/* Two-column layout */}
+      <div style={{ display: "flex", height: "100%", padding: 80 }}>
+        {/* Left: text content */}
+        <div
+          style={{
+            flex: 1,
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
+            paddingRight: 60,
+          }}
+        >
+          {/* Section number */}
+          <div
+            style={{
+              fontSize: width * 0.012,
+              fontFamily: theme.fonts.body,
+              color: brandColor,
+              fontWeight: 700,
+              letterSpacing: 3,
+              textTransform: "uppercase",
+              marginBottom: 16,
+              opacity: headerSlide,
+            }}
+          >
+            Section {sectionNumber} of {totalSections}
+          </div>
+
+          {/* Section title */}
+          <h2
+            style={{
+              fontSize: width * 0.03,
+              fontFamily: theme.fonts.heading,
+              fontWeight: 700,
+              color: theme.colors.text,
+              margin: "0 0 24px 0",
+              opacity: headerSlide,
+              transform: `translateX(${(1 - headerSlide) * -40}px)`,
+            }}
+          >
+            {section.title}
+          </h2>
+
+          {/* Section body */}
+          <p
+            style={{
+              fontSize: width * 0.016,
+              fontFamily: theme.fonts.body,
+              color: theme.colors.textMuted,
+              lineHeight: 1.6,
+              margin: 0,
+              opacity: contentFade,
+              transform: `translateY(${(1 - contentFade) * 20}px)`,
+            }}
+          >
+            {section.body}
+          </p>
+        </div>
+
+        {/* Right: visual/diagram area */}
+        <div
+          style={{
+            flex: 1,
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            opacity: contentFade,
+            transform: `scale(${0.9 + contentFade * 0.1})`,
+          }}
+        >
+          {section.visual ? (
+            <Img
+              src={staticFile(section.visual)}
+              style={{ maxWidth: "100%", maxHeight: "80%", borderRadius: 12 }}
+            />
+          ) : (
+            <div
+              style={{
+                width: "80%",
+                height: "60%",
+                borderRadius: 16,
+                backgroundColor: theme.colors.surface,
+                border: `2px solid ${brandColor}22`,
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                fontSize: width * 0.015,
+                color: theme.colors.textMuted,
+                fontFamily: theme.fonts.body,
+              }}
+            >
+              [Visual / Diagram Placeholder]
+            </div>
+          )}
+        </div>
+      </div>
+    </AbsoluteFill>
+  );
+};
+
+const OutroScene: React.FC<{
+  ctaText: string;
+  brandColor: string;
+  logoSrc?: string;
+}> = ({ ctaText, brandColor, logoSrc }) => {
+  const frame = useCurrentFrame();
+  const { fps, width } = useVideoConfig();
+
+  const fadeIn = spring({ frame, fps, config: { damping: 20 } });
+
+  return (
+    <AbsoluteFill
+      style={{
+        backgroundColor: theme.colors.background,
+        justifyContent: "center",
+        alignItems: "center",
+        padding: 120,
+      }}
+    >
+      {logoSrc && (
+        <Img
+          src={staticFile(logoSrc)}
+          style={{ width: 80, height: 80, marginBottom: 40, opacity: fadeIn }}
+        />
+      )}
+      <div
+        style={{
+          fontSize: width * 0.03,
+          fontFamily: theme.fonts.heading,
+          fontWeight: 700,
+          color: theme.colors.text,
+          textAlign: "center",
+          opacity: fadeIn,
+        }}
+      >
+        {ctaText}
+      </div>
+    </AbsoluteFill>
+  );
+};
+
+// -- Main Composition --
+
+export const Explainer: React.FC<ExplainerProps> = ({
+  title,
+  subtitle,
+  sections,
+  ctaText,
+  brandColor = theme.colors.primary,
+  logoSrc,
+}) => {
+  const { fps } = useVideoConfig();
+
+  const titleDuration = fps * 5;
+  const sectionDuration = fps * 20; // 20s per section (adjust as needed)
+  const outroDuration = fps * 5;
+
+  return (
+    <AbsoluteFill style={{ backgroundColor: theme.colors.background }}>
+      <Series>
+        {/* Title card */}
+        <Series.Sequence durationInFrames={titleDuration}>
+          <TitleCard
+            title={title}
+            subtitle={subtitle}
+            brandColor={brandColor}
+            logoSrc={logoSrc}
+          />
+        </Series.Sequence>
+
+        {/* Content sections */}
+        {sections.map((section, i) => (
+          <Series.Sequence key={i} durationInFrames={sectionDuration}>
+            <SectionScene
+              section={section}
+              sectionNumber={i + 1}
+              totalSections={sections.length}
+              brandColor={brandColor}
+            />
+          </Series.Sequence>
+        ))}
+
+        {/* Outro / CTA */}
+        <Series.Sequence durationInFrames={outroDuration}>
+          <OutroScene ctaText={ctaText} brandColor={brandColor} logoSrc={logoSrc} />
+        </Series.Sequence>
+      </Series>
+    </AbsoluteFill>
+  );
+};

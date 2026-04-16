@@ -1,0 +1,10 @@
+# content-skills Python dependencies
+#
+# All scripts use the Python standard library only.
+# No external packages are required.
+#
+# Python >= 3.10 is recommended (for type hint syntax).
+#
+# Standard library modules used:
+#   argparse, json, re, sys, math, pathlib, collections,
+#   datetime, xml.etree.ElementTree, textwrap, os

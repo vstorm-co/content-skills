@@ -1,0 +1,329 @@
+// Data Story Template (30s - 3 minutes)
+// Landscape format (1920x1080) optimized for data-driven narratives
+// Structure: Headline Stat -> Context -> Data Points -> Insight -> CTA
+
+import React from "react";
+import {
+  AbsoluteFill,
+  Sequence,
+  Series,
+  useCurrentFrame,
+  useVideoConfig,
+  spring,
+  interpolate,
+  Easing,
+} from "remotion";
+import { theme } from "../theme";
+
+// -- Props Interface --
+
+interface DataPoint {
+  label: string;
+  value: number;
+  unit?: string;       // e.g., "%", "x", "M", "$"
+  prefix?: string;     // e.g., "$", "#"
+  context?: string;    // explanatory text below the number
+}
+
+interface DataStoryProps {
+  headlineStat: DataPoint;
+  headlineNarration: string;
+  dataPoints: DataPoint[];
+  insightText: string;
+  ctaText: string;
+  brandColor?: string;
+  secondaryColor?: string;
+}
+
+// -- Reusable Components --
+
+const AnimatedNumber: React.FC<{
+  from?: number;
+  to: number;
+  prefix?: string;
+  unit?: string;
+  fontSize: number;
+  color: string;
+  duration?: number;
+}> = ({ from = 0, to, prefix = "", unit = "", fontSize, color, duration = 45 }) => {
+  const frame = useCurrentFrame();
+
+  const progress = interpolate(frame, [5, duration], [0, 1], {
+    extrapolateLeft: "clamp",
+    extrapolateRight: "clamp",
+    easing: Easing.out(Easing.cubic),
+  });
+
+  const value = Math.round(from + (to - from) * progress);
+
+  return (
+    <div
+      style={{
+        fontSize,
+        fontFamily: theme.fonts.heading,
+        fontWeight: 800,
+        color,
+        fontVariantNumeric: "tabular-nums",
+      }}
+    >
+      {prefix}
+      {value.toLocaleString()}
+      {unit}
+    </div>
+  );
+};
+
+const BarChart: React.FC<{
+  dataPoints: DataPoint[];
+  brandColor: string;
+  maxValue?: number;
+}> = ({ dataPoints, brandColor, maxValue }) => {
+  const frame = useCurrentFrame();
+  const { fps, width, height } = useVideoConfig();
+  const max = maxValue || Math.max(...dataPoints.map((d) => d.value));
+
+  return (
+    <div
+      style={{
+        display: "flex",
+        alignItems: "flex-end",
+        justifyContent: "center",
+        gap: 24,
+        height: "60%",
+        padding: "0 80px",
+      }}
+    >
+      {dataPoints.map((point, i) => {
+        const barSpring = spring({
+          frame: frame - i * 8,
+          fps,
+          config: { damping: 12, stiffness: 120 },
+        });
+
+        const barHeight = (point.value / max) * 100;
+
+        return (
+          <div
+            key={i}
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              flex: 1,
+            }}
+          >
+            {/* Value label above bar */}
+            <div
+              style={{
+                fontSize: width * 0.016,
+                fontFamily: theme.fonts.heading,
+                fontWeight: 700,
+                color: theme.colors.text,
+                marginBottom: 8,
+                opacity: barSpring,
+              }}
+            >
+              {point.prefix || ""}
+              {point.value.toLocaleString()}
+              {point.unit || ""}
+            </div>
+
+            {/* Bar */}
+            <div
+              style={{
+                width: "70%",
+                height: `${barHeight * barSpring}%`,
+                backgroundColor: brandColor,
+                borderRadius: 8,
+                minHeight: 4,
+                opacity: 0.7 + barSpring * 0.3,
+              }}
+            />
+
+            {/* Label below bar */}
+            <div
+              style={{
+                fontSize: width * 0.012,
+                fontFamily: theme.fonts.body,
+                color: theme.colors.textMuted,
+                marginTop: 12,
+                textAlign: "center",
+                opacity: barSpring,
+              }}
+            >
+              {point.label}
+            </div>
+          </div>
+        );
+      })}
+    </div>
+  );
+};
+
+// -- Scene Components --
+
+const HeadlineStatScene: React.FC<{
+  stat: DataPoint;
+  narration: string;
+  brandColor: string;
+}> = ({ stat, narration, brandColor }) => {
+  const frame = useCurrentFrame();
+  const { fps, width } = useVideoConfig();
+
+  const textFade = spring({ frame: frame - 30, fps, config: { damping: 15 } });
+
+  return (
+    <AbsoluteFill
+      style={{
+        backgroundColor: theme.colors.background,
+        justifyContent: "center",
+        alignItems: "center",
+        padding: 120,
+      }}
+    >
+      <AnimatedNumber
+        to={stat.value}
+        prefix={stat.prefix}
+        unit={stat.unit}
+        fontSize={width * 0.08}
+        color={brandColor}
+        duration={50}
+      />
+
+      <div
+        style={{
+          fontSize: width * 0.018,
+          fontFamily: theme.fonts.body,
+          color: theme.colors.textMuted,
+          textAlign: "center",
+          marginTop: 16,
+          opacity: textFade,
+          maxWidth: "60%",
+          lineHeight: 1.5,
+        }}
+      >
+        {narration}
+      </div>
+    </AbsoluteFill>
+  );
+};
+
+const DataComparisonScene: React.FC<{
+  dataPoints: DataPoint[];
+  brandColor: string;
+}> = ({ dataPoints, brandColor }) => {
+  return (
+    <AbsoluteFill
+      style={{
+        backgroundColor: theme.colors.background,
+        justifyContent: "center",
+        alignItems: "center",
+      }}
+    >
+      <BarChart dataPoints={dataPoints} brandColor={brandColor} />
+    </AbsoluteFill>
+  );
+};
+
+const InsightScene: React.FC<{
+  text: string;
+  brandColor: string;
+}> = ({ text, brandColor }) => {
+  const frame = useCurrentFrame();
+  const { fps, width } = useVideoConfig();
+
+  const revealSpring = spring({ frame, fps, config: { damping: 15 } });
+
+  return (
+    <AbsoluteFill
+      style={{
+        backgroundColor: theme.colors.background,
+        justifyContent: "center",
+        alignItems: "center",
+        padding: 160,
+      }}
+    >
+      <div
+        style={{
+          width: 48,
+          height: 48,
+          borderRadius: 24,
+          backgroundColor: brandColor,
+          marginBottom: 32,
+          opacity: revealSpring,
+          transform: `scale(${revealSpring})`,
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          fontSize: 24,
+          color: theme.colors.text,
+        }}
+      >
+        !
+      </div>
+
+      <div
+        style={{
+          fontSize: width * 0.028,
+          fontFamily: theme.fonts.heading,
+          fontWeight: 700,
+          color: theme.colors.text,
+          textAlign: "center",
+          lineHeight: 1.4,
+          opacity: revealSpring,
+          transform: `translateY(${(1 - revealSpring) * 30}px)`,
+        }}
+      >
+        {text}
+      </div>
+    </AbsoluteFill>
+  );
+};
+
+// -- Main Composition --
+
+export const DataStory: React.FC<DataStoryProps> = ({
+  headlineStat,
+  headlineNarration,
+  dataPoints,
+  insightText,
+  ctaText,
+  brandColor = theme.colors.primary,
+}) => {
+  const { fps } = useVideoConfig();
+
+  const headlineDuration = fps * 5;
+  const dataDuration = fps * 8;
+  const insightDuration = fps * 5;
+  const ctaDuration = fps * 4;
+
+  return (
+    <AbsoluteFill style={{ backgroundColor: theme.colors.background }}>
+      <Series>
+        {/* Headline stat reveal */}
+        <Series.Sequence durationInFrames={headlineDuration}>
+          <HeadlineStatScene
+            stat={headlineStat}
+            narration={headlineNarration}
+            brandColor={brandColor}
+          />
+        </Series.Sequence>
+
+        {/* Data comparison */}
+        <Series.Sequence durationInFrames={dataDuration}>
+          <DataComparisonScene dataPoints={dataPoints} brandColor={brandColor} />
+        </Series.Sequence>
+
+        {/* Key insight */}
+        <Series.Sequence durationInFrames={insightDuration}>
+          <InsightScene text={insightText} brandColor={brandColor} />
+        </Series.Sequence>
+
+        {/* CTA */}
+        <Series.Sequence durationInFrames={ctaDuration}>
+          <InsightScene text={ctaText} brandColor={brandColor} />
+        </Series.Sequence>
+      </Series>
+    </AbsoluteFill>
+  );
+};

@@ -1,0 +1,141 @@
+{
+  "_description": "Default layout tokens for content-skills. Defines spacing, sizing, and grid systems used across presentations, infographics, and web content.",
+  "base_unit": 8,
+  "base_unit_description": "All spacing values are multiples of 8px",
+  "max_width": {
+    "text": {
+      "value": "720px",
+      "px": 720,
+      "description": "Maximum width for long-form text content (blog posts, articles). Keeps line length at 65-80 characters for readability."
+    },
+    "slides": {
+      "value": "1200px",
+      "px": 1200,
+      "description": "Maximum width for slide content. Standard 16:9 presentation width."
+    },
+    "infographic": {
+      "value": "800px",
+      "px": 800,
+      "description": "Maximum width for infographic layouts. Narrow enough to read on screen, wide enough for data."
+    },
+    "wide": {
+      "value": "1440px",
+      "px": 1440,
+      "description": "Maximum width for full-width layouts and dashboards."
+    }
+  },
+  "grid": {
+    "columns": 12,
+    "gutter": "24px",
+    "gutter_px": 24,
+    "margin": "24px",
+    "margin_px": 24,
+    "description": "Standard 12-column grid. Use 4-column for mobile, 8-column for tablet, 12 for desktop."
+  },
+  "spacing": {
+    "scale": [4, 8, 16, 24, 32, 48, 64],
+    "tokens": {
+      "xxs": {
+        "value": "4px",
+        "px": 4,
+        "usage": "Tight gaps between inline elements, icon padding"
+      },
+      "xs": {
+        "value": "8px",
+        "px": 8,
+        "usage": "Small gaps, form field padding, list item spacing"
+      },
+      "sm": {
+        "value": "16px",
+        "px": 16,
+        "usage": "Default padding, paragraph spacing, card padding"
+      },
+      "md": {
+        "value": "24px",
+        "px": 24,
+        "usage": "Section padding, grid gutters, modal padding"
+      },
+      "lg": {
+        "value": "32px",
+        "px": 32,
+        "usage": "Component spacing, content block margins"
+      },
+      "xl": {
+        "value": "48px",
+        "px": 48,
+        "usage": "Section spacing, hero padding, slide margins"
+      },
+      "xxl": {
+        "value": "64px",
+        "px": 64,
+        "usage": "Major section breaks, page-level spacing"
+      }
+    }
+  },
+  "breakpoints": {
+    "mobile": {
+      "value": "480px",
+      "px": 480,
+      "columns": 4,
+      "description": "Small phones"
+    },
+    "tablet": {
+      "value": "768px",
+      "px": 768,
+      "columns": 8,
+      "description": "Tablets and large phones in landscape"
+    },
+    "desktop": {
+      "value": "1024px",
+      "px": 1024,
+      "columns": 12,
+      "description": "Standard desktop and laptop screens"
+    },
+    "wide": {
+      "value": "1440px",
+      "px": 1440,
+      "columns": 12,
+      "description": "Wide desktop screens and external monitors"
+    }
+  },
+  "slide_dimensions": {
+    "standard_16_9": {
+      "width": 1920,
+      "height": 1080,
+      "aspect_ratio": "16:9",
+      "description": "Standard presentation slide (1080p)"
+    },
+    "standard_4_3": {
+      "width": 1024,
+      "height": 768,
+      "aspect_ratio": "4:3",
+      "description": "Legacy presentation format"
+    },
+    "social_square": {
+      "width": 1080,
+      "height": 1080,
+      "aspect_ratio": "1:1",
+      "description": "Instagram, LinkedIn carousel"
+    },
+    "social_story": {
+      "width": 1080,
+      "height": 1920,
+      "aspect_ratio": "9:16",
+      "description": "Instagram/TikTok stories, vertical video"
+    },
+    "video_1080p": {
+      "width": 1920,
+      "height": 1080,
+      "aspect_ratio": "16:9",
+      "description": "Standard HD video (YouTube, Remotion)"
+    }
+  },
+  "border_radius": {
+    "none": "0px",
+    "sm": "4px",
+    "md": "8px",
+    "lg": "12px",
+    "xl": "16px",
+    "full": "9999px"
+  }
+}

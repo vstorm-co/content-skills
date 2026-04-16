@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 320" fill="none">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#0c0a08;stop-opacity:1"/>
+      <stop offset="100%" style="stop-color:#080706;stop-opacity:1"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#f59e0b;stop-opacity:1"/>
+      <stop offset="100%" style="stop-color:#fbbf24;stop-opacity:1"/>
+    </linearGradient>
+    <linearGradient id="title" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#fafaf9;stop-opacity:1"/>
+      <stop offset="100%" style="stop-color:#e7e5e4;stop-opacity:1"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="320" rx="16" fill="url(#bg)"/>
+
+  <!-- Thin accent bar -->
+  <rect x="0" y="0" width="1200" height="2" fill="url(#accent)"/>
+
+  <!-- Terminal icon with slash-command glyph -->
+  <g transform="translate(72, 112)">
+    <rect width="96" height="96" rx="18" fill="#14110d" stroke="#24201a" stroke-width="1.5"/>
+    <!-- window dots -->
+    <circle cx="16" cy="14" r="3" fill="#24201a"/>
+    <circle cx="28" cy="14" r="3" fill="#24201a"/>
+    <circle cx="40" cy="14" r="3" fill="#24201a"/>
+    <!-- slash-command glyph -->
+    <text x="48" y="70" font-family="'SF Mono','JetBrains Mono','Fira Code',monospace" font-size="48" font-weight="700" fill="url(#accent)" text-anchor="middle" letter-spacing="-1">/</text>
+  </g>
+
+  <!-- Title -->
+  <text x="200" y="160" font-family="'Inter','SF Pro Display',system-ui,-apple-system,sans-serif" font-size="52" font-weight="800" fill="url(#title)" letter-spacing="-1.5">
+    content-skills
+  </text>
+
+  <!-- Subtitle -->
+  <text x="200" y="198" font-family="'Inter',system-ui,-apple-system,sans-serif" font-size="19" fill="#d6d3d1" letter-spacing="-0.2">
+    A content studio with YOUR brand baked in.
+  </text>
+
+  <!-- Compatibility / topic line -->
+  <g transform="translate(200, 232)" font-family="'SF Mono','JetBrains Mono',monospace" font-size="12" font-weight="600" letter-spacing="1.5">
+    <text x="0" y="0" fill="#a8a29e">BLOG</text>
+    <text x="46" y="0" fill="#78716c">·</text>
+    <text x="62" y="0" fill="#a8a29e">SOCIAL</text>
+    <text x="130" y="0" fill="#78716c">·</text>
+    <text x="146" y="0" fill="#a8a29e">SLIDES</text>
+    <text x="218" y="0" fill="#78716c">·</text>
+    <text x="234" y="0" fill="#a8a29e">VIDEO</text>
+    <text x="294" y="0" fill="#78716c">·</text>
+    <text x="310" y="0" fill="#a8a29e">ANTI-SLOP</text>
+  </g>
+
+  <!-- Bottom footer -->
+  <g transform="translate(72, 288)" font-family="'Inter',system-ui,sans-serif" font-size="12" fill="#a8a29e">
+    <text x="0" y="0">by Vstorm  ·  vstorm.co</text>
+    <text x="1056" y="0" text-anchor="end" fill="#a8a29e">Claude Code  ·  Codex  ·  AGENTS.md</text>
+  </g>
+</svg>

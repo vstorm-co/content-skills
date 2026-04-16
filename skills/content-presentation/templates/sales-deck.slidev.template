@@ -1,0 +1,177 @@
+# B2B Sales Deck Template (Slidev)
+
+## Format: 12-18 slides | Framework: Slidev | Duration: 15-30 minutes (live or async)
+
+---
+
+## Narrative Arc
+
+A sales deck is not a product tour. It is a conversation framework. The narrative follows: **Challenge** (the buyer's world) -> **Framework** (a new way to think about it) -> **Proof** (others who succeeded) -> **ROI** (the math that justifies the decision).
+
+The deck should work both live (salesperson presents) and async (buyer reads on their own). Speaker notes carry the live delivery; slide content must stand alone for async.
+
+---
+
+## Slide Structure
+
+### Slide 1: Title
+**Layout**: `cover`
+**Content**: Your company name, tagline or one-line value prop, prospect company name if personalized.
+**Speaker Notes**: Do not linger here. "Thanks for the time. Let me show you what we have been working on."
+
+```markdown
+---
+layout: cover
+---
+
+# [Your Company]
+
+[One-line value prop: what you do for whom]
+
+*Prepared for [Prospect Company]*
+```
+
+---
+
+### Slide 2: The World Has Changed
+**Layout**: `default`
+**Content**: An industry shift, market trend, or emerging challenge that the buyer cannot ignore. Use a stat or data point.
+**Speaker Notes**: "Before I talk about us, I want to talk about [the shift]. You are probably seeing this in your business already."
+**Purpose**: Establish relevance. Show you understand their world before pitching.
+
+---
+
+### Slide 3: The Old Way Is Breaking
+**Layout**: `default`
+**Content**: How the current approach (competitors, manual processes, status quo) fails in the new reality. Be specific.
+**Speaker Notes**: "Most companies are still doing [old approach]. The problem is [specific failure]."
+
+---
+
+### Slide 4: The Cost
+**Layout**: `fact`
+**Content**: One big number: the cost of the problem per year, per team, or per incident. "Companies like yours lose $[X] per [unit] due to [problem]."
+**Speaker Notes**: Let the number sit. Then: "And that is just the direct cost. The opportunity cost is [bigger number]."
+
+---
+
+### Slide 5: A Better Framework
+**Layout**: `center`
+**Content**: Introduce your framework or approach. Not your product -- your way of thinking about the problem. Give it a name if possible.
+**Speaker Notes**: "We think about this differently. Instead of [old frame], we focus on [new frame]. Here is what that looks like."
+
+**Anti-pattern**: Do not jump to features. Sell the framework first. Features are evidence that you can deliver the framework.
+
+---
+
+### Slide 6: How It Works
+**Layout**: `two-cols` or `default`
+**Content**: 3-step process. Step 1 -> Step 2 -> Step 3. Simple enough for a non-technical buyer to follow.
+**Speaker Notes**: Walk through each step. For each step, mention the buyer's pain point it addresses.
+
+---
+
+### Slide 7: Product in Action
+**Layout**: `image-right` or `default`
+**Content**: Screenshot or demo walkthrough. Show the product solving the problem from Slide 3. Annotate the screenshot.
+**Speaker Notes**: "Let me show you what this looks like in practice." Walk through the UI. If live, offer to demo.
+
+---
+
+### Slide 8: Case Study 1
+**Layout**: `default`
+**Content**: Customer name (with permission), their challenge, what you did, the measurable result. Format: Challenge -> Solution -> Result.
+**Speaker Notes**: Tell the story. "When [customer] came to us, they were dealing with [problem]. Within [timeframe], they achieved [result]."
+
+---
+
+### Slide 9: Case Study 2
+**Layout**: `default`
+**Content**: A second case study. Different industry or use case to show breadth.
+**Speaker Notes**: "And it is not just [industry 1]. In [industry 2], [customer] saw [different result]."
+
+---
+
+### Slide 10: By the Numbers
+**Layout**: `default`
+**Content**: 3-4 key metrics across your customer base. Use a grid of stat cards. "47% faster", "3x pipeline growth", "$2.1M saved annually."
+**Speaker Notes**: "Across our customer base, the pattern is consistent. Let me walk you through the numbers."
+
+---
+
+### Slide 11: ROI Calculator
+**Layout**: `default`
+**Content**: A simple ROI framework the buyer can apply to their own numbers. "If you have [X] employees doing [Y] hours of [task], and we reduce that by [Z%], your annual savings are [$]."
+**Speaker Notes**: "Let me make this concrete for [Prospect Company]. Based on what you told me about your team size, here is what the math looks like."
+
+**This slide should be personalized per prospect whenever possible.**
+
+---
+
+### Slide 12: What Sets Us Apart
+**Layout**: `default`
+**Content**: 2-3 differentiated capabilities. Not features -- capabilities. What you can do that alternatives cannot. Be specific about the alternative.
+**Speaker Notes**: "You might be wondering how this compares to [competitor/status quo]. The key differences are..."
+
+---
+
+### Slide 13: Who We Work With
+**Layout**: `default`
+**Content**: Logo grid of recognizable customers. If you have few logos, use testimonial quotes instead.
+**Speaker Notes**: "We work with companies ranging from [size] to [size] in [industries]."
+
+---
+
+### Slide 14: Getting Started
+**Layout**: `default`
+**Content**: Implementation timeline. Week 1: [X]. Week 2-3: [Y]. Week 4: [Z]. Emphasize time to first value.
+**Speaker Notes**: "Here is what the first month looks like. Most customers see initial results by [timeframe]."
+
+---
+
+### Slide 15: Investment
+**Layout**: `default`
+**Content**: Pricing tiers or starting price. If pricing is complex, simplify to ranges and note that you will follow up with a detailed quote.
+**Speaker Notes**: Only show this if you discuss pricing in the first meeting. Some sales processes defer pricing. If so, replace with a "Packages" overview.
+
+---
+
+### Slide 16: Next Steps
+**Layout**: `center`
+**Content**: 2-3 concrete next steps. "1. We send you a detailed proposal by [date]. 2. You loop in [stakeholder]. 3. We schedule a technical deep-dive."
+**Speaker Notes**: "So here is what I suggest as next steps." Be specific. Vague next steps kill deals.
+
+---
+
+### Slide 17: Your Questions
+**Layout**: `center`
+**Content**: "What questions do you have?" (Not "Any questions?" -- that invites "no.")
+**Speaker Notes**: Prepare for objections. Common ones: "How long is implementation?", "How does this integrate with [tool]?", "What about [competitor]?"
+
+---
+
+### Slide 18: Contact (Optional)
+**Layout**: `end`
+**Content**: Your name, email, phone, company URL.
+**Speaker Notes**: "I will send a follow-up email today with [specific resource they asked about] and the proposal."
+
+---
+
+## Personalization Checklist
+
+Before every meeting, update:
+- [ ] Prospect company name on title slide
+- [ ] Industry-relevant case studies (swap Slides 8-9)
+- [ ] ROI calculator with prospect's numbers (Slide 11)
+- [ ] "What Sets Us Apart" framed against their specific alternatives (Slide 12)
+- [ ] Next steps with real dates and names (Slide 16)
+
+---
+
+## Usage
+
+1. Copy into `slides.md`.
+2. Personalize per the checklist above.
+3. Apply brand styles via `style.css`.
+4. Run `npx slidev slides.md` to preview.
+5. For async delivery: `npx slidev export` to PDF.

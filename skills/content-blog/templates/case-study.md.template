@@ -1,0 +1,75 @@
+# [Title: How {Company/Team} {Achieved Result} by {Doing What}]
+
+<!-- CONTEXT: Set the scene. Who, what, when. -->
+
+## The Context
+
+{Who is the company/team/person? What do they do? What scale are they operating at? Give enough background for the reader to understand the stakes.}
+
+{Key metrics or context that will make the results meaningful later:}
+- {Metric 1: e.g., team size, revenue, user count}
+- {Metric 2: e.g., timeline, growth rate}
+
+<!-- CHALLENGE -->
+
+## The Challenge
+
+{What problem were they facing? Be specific. Use the language and framing they would use internally.}
+
+{What had they already tried? Why hadn't it worked?}
+
+{What was at stake if the problem went unsolved?}
+
+<!-- APPROACH -->
+
+## The Approach
+
+{What did they decide to do and why?}
+
+### Phase 1: {Name}
+{What they did, what tools or methods they used, key decisions made.}
+
+### Phase 2: {Name}
+{How the approach evolved. Include any pivots, surprises, or adjustments.}
+
+### Phase 3: {Name}
+{Final implementation or iteration.}
+
+{Include specific details: technologies used, team structure, timeline, resources allocated.}
+
+<!-- RESULTS -->
+
+## The Results
+
+{Lead with the headline number. Make it concrete.}
+
+| Metric | Before | After | Change |
+|---|---|---|---|
+| {Metric 1} | {value} | {value} | {+/- %} |
+| {Metric 2} | {value} | {value} | {+/- %} |
+| {Metric 3} | {value} | {value} | {+/- %} |
+
+{Contextualize the numbers. What do they mean in practical terms?}
+
+{Include any unexpected positive (or negative) side effects.}
+
+<!-- LESSONS LEARNED -->
+
+## Lessons Learned
+
+**{Lesson 1}**
+{What they would tell someone facing a similar challenge. Be specific enough to be actionable.}
+
+**{Lesson 2}**
+{A surprise or counterintuitive finding from the project.}
+
+**{Lesson 3}**
+{What they would do differently if starting over.}
+
+<!-- CLOSE -->
+
+## What's Next
+
+{Where is the company/team going from here? How does this result set up the next challenge or opportunity?}
+
+{CTA: link to the tool, invite the reader to try the approach, or ask them to share their own experience.}

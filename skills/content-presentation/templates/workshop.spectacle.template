@@ -1,0 +1,281 @@
+# Interactive Workshop Template (Spectacle)
+
+## Format: Variable length | Framework: Spectacle (React) | Duration: 1-4 hours
+
+---
+
+## Why Spectacle for Workshops
+
+Workshops need interactive elements: live code editors, embedded exercises, timers, and dynamic content. Spectacle's React component model lets you build custom slide types (exercise cards, timer slides, poll embeds) that static frameworks cannot match.
+
+---
+
+## Narrative Arc
+
+Workshops alternate between **teaching** and **doing**. The rhythm is:
+
+1. Concept introduction (3-5 min)
+2. Demonstration (5-10 min)
+3. Hands-on exercise (10-20 min)
+4. Group review (5 min)
+5. Repeat
+
+Build in breaks every 45-60 minutes.
+
+---
+
+## Slide Types
+
+### Title Card
+
+```jsx
+<Slide backgroundColor="primary">
+  <FlexBox height="100%" flexDirection="column" justifyContent="center" alignItems="center">
+    <Heading fontSize="h1" color="tertiary">[Workshop Title]</Heading>
+    <Text fontSize="h3" color="tertiary">[Your Name] | [Date]</Text>
+    <Text fontSize="text" color="tertiary" marginTop={40}>
+      WiFi: [network] | Password: [password]
+    </Text>
+    <Text fontSize="text" color="tertiary">
+      Repo: [github-url]
+    </Text>
+  </FlexBox>
+  <Notes>
+    Welcome everyone. Before we start, make sure you have:
+    1. Cloned the repo
+    2. Run npm install
+    3. Connected to WiFi
+    Give them 5 minutes to set up.
+  </Notes>
+</Slide>
+```
+
+---
+
+### Setup Check Slide
+
+```jsx
+<Slide>
+  <Heading>Before We Begin</Heading>
+  <OrderedList>
+    <Appear><ListItem>Clone the repo: <code>[url]</code></ListItem></Appear>
+    <Appear><ListItem>Run <code>npm install</code></ListItem></Appear>
+    <Appear><ListItem>Run <code>npm run verify</code> -- you should see "Ready"</ListItem></Appear>
+    <Appear><ListItem>Open <code>exercises/</code> in your editor</ListItem></Appear>
+  </OrderedList>
+  <Notes>
+    Walk around the room. Help anyone who is stuck. Do not proceed until
+    80% of the room has a working setup. Common issues: Node version,
+    npm permissions, corporate proxy.
+  </Notes>
+</Slide>
+```
+
+---
+
+### Concept Slide
+
+```jsx
+<Slide>
+  <Heading>[Concept Name]</Heading>
+  <Text>[One paragraph explanation]</Text>
+  <Appear>
+    <Text fontWeight="bold" color="secondary">
+      Key insight: [the one thing to remember]
+    </Text>
+  </Appear>
+  <Notes>
+    Explain the concept in plain language first. Use an analogy if helpful.
+    Then reveal the key insight. This is what they need to hold in their
+    head during the exercise.
+  </Notes>
+</Slide>
+```
+
+---
+
+### Live Code Slide
+
+```jsx
+<Slide>
+  <Heading fontSize="h3">[What this code demonstrates]</Heading>
+  <CodePane language="javascript" highlightRanges={[1, [3, 5], [7, 10]]}>
+{`// Step 1: [What we're setting up]
+const client = createClient({ apiKey: process.env.KEY });
+
+// Step 2: [The key operation]
+const result = await client.query({
+  collection: 'users',
+  filter: { active: true },
+});
+
+// Step 3: [Processing the result]
+const formatted = result.map(user => ({
+  name: user.displayName,
+  email: user.primaryEmail,
+}));`}
+  </CodePane>
+  <Notes>
+    Type this live if you can. If not, step through the highlights.
+    "First we create the client... then we make our query... then we
+    process the results." Ask the room: "What would happen if we
+    removed the filter?"
+  </Notes>
+</Slide>
+```
+
+---
+
+### Exercise Slide
+
+```jsx
+<Slide backgroundColor="#1A1A2E">
+  <FlexBox flexDirection="column" alignItems="center" justifyContent="center" height="100%">
+    <Text fontSize="24px" color="#E94560" fontWeight="bold">EXERCISE</Text>
+    <Heading fontSize="h2" color="white" margin="20px 0">
+      [Exercise Title]
+    </Heading>
+    <Box backgroundColor="rgba(255,255,255,0.1)" padding={30} borderRadius={8} width="80%">
+      <OrderedList>
+        <ListItem color="white">Open <code>exercises/[number]/start.js</code></ListItem>
+        <ListItem color="white">[Specific task 1]</ListItem>
+        <ListItem color="white">[Specific task 2]</ListItem>
+        <ListItem color="white">Run <code>npm test exercises/[number]</code> to verify</ListItem>
+      </OrderedList>
+    </Box>
+    <Text fontSize="28px" color="#E94560" marginTop={30} fontWeight="bold">
+      Time: 15 minutes
+    </Text>
+  </FlexBox>
+  <Notes>
+    Set a visible timer. Walk around the room. Common sticking points:
+    - [Thing 1 people get wrong]
+    - [Thing 2 people forget]
+    If someone finishes early, point them to the bonus challenge in
+    exercises/[number]/bonus.js
+  </Notes>
+</Slide>
+```
+
+---
+
+### Break Slide
+
+```jsx
+<Slide backgroundColor="#16213E">
+  <FlexBox flexDirection="column" alignItems="center" justifyContent="center" height="100%">
+    <Heading fontSize="h1" color="white">Break</Heading>
+    <Text fontSize="h2" color="#E94560">15 minutes</Text>
+    <Text fontSize="text" color="rgba(255,255,255,0.6)" marginTop={40}>
+      Back at [time]
+    </Text>
+  </FlexBox>
+  <Notes>
+    Start the timer. Use this time to check in with anyone who was
+    struggling. Refill water. Check the room temperature.
+  </Notes>
+</Slide>
+```
+
+---
+
+### Group Review Slide
+
+```jsx
+<Slide>
+  <Heading>Exercise Review</Heading>
+  <Text>Let's walk through the solution together.</Text>
+  <CodePane language="javascript" highlightRanges={[[1, 3], [5, 8], [10, 12]]}>
+{`// Solution code here
+// Step through the approach
+// Highlight the key decisions`}
+  </CodePane>
+  <Notes>
+    Ask: "Who wants to share their approach?" Let 1-2 people explain
+    their solution before showing yours. Validate different approaches.
+    "That works too, and here is why I prefer this pattern: [reason]."
+  </Notes>
+</Slide>
+```
+
+---
+
+### Section Divider
+
+```jsx
+<Slide backgroundColor="secondary">
+  <FlexBox height="100%" alignItems="center" justifyContent="center">
+    <Heading fontSize="h1" color="tertiary">
+      Part [N]: [Section Title]
+    </Heading>
+  </FlexBox>
+  <Notes>
+    Quick recap of what we covered in the previous section.
+    Preview of what's coming next.
+  </Notes>
+</Slide>
+```
+
+---
+
+### Wrap-Up Slide
+
+```jsx
+<Slide>
+  <Heading>What You Built Today</Heading>
+  <OrderedList>
+    <ListItem>[Capability 1 they now have]</ListItem>
+    <ListItem>[Capability 2 they now have]</ListItem>
+    <ListItem>[Capability 3 they now have]</ListItem>
+  </OrderedList>
+  <Text marginTop={30}>
+    The completed exercises are in the <code>solutions/</code> branch.
+  </Text>
+  <Notes>
+    Celebrate what they accomplished. "You walked in this morning not
+    knowing [X], and now you have a working [Y]. That's real."
+  </Notes>
+</Slide>
+```
+
+---
+
+### Resources and Next Steps
+
+```jsx
+<Slide>
+  <Heading>Keep Going</Heading>
+  <UnorderedList>
+    <ListItem>Docs: [url]</ListItem>
+    <ListItem>Community: [url]</ListItem>
+    <ListItem>Advanced workshop: [url] (if applicable)</ListItem>
+    <ListItem>My contact: [email/handle]</ListItem>
+  </UnorderedList>
+  <Notes>
+    "If you get stuck after today, [resource] is the best place to
+    start. And you can always reach me at [contact]."
+  </Notes>
+</Slide>
+```
+
+---
+
+## Workshop Pacing Guide
+
+| Duration | Sections | Exercises | Breaks |
+|---|---|---|---|
+| 1 hour | 2 | 2 | 0 |
+| 2 hours | 3-4 | 3-4 | 1 (10 min) |
+| Half day (3h) | 4-5 | 4-5 | 2 (15 min) |
+| Full day (6h) | 6-8 | 6-8 | 3 + lunch |
+
+---
+
+## Usage
+
+1. Create React project with Spectacle (see `frameworks/spectacle.md`).
+2. Build slide components using patterns above.
+3. Create `exercises/` directory with numbered exercise folders.
+4. Each exercise folder: `start.js` (skeleton), `solution.js` (answer), `test.js` (verification).
+5. Apply brand theme via the theme object.
+6. Test presenter mode (`Alt + P`).

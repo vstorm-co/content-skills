@@ -1,0 +1,125 @@
+{
+  "_description": "Default typography tokens for content-skills. Overridden by brand/VISUAL.md when it exists.",
+  "fonts": {
+    "display": {
+      "family": "Space Grotesk",
+      "fallback": "ui-sans-serif, system-ui, -apple-system, sans-serif",
+      "weight": {
+        "regular": 400,
+        "medium": 500,
+        "semibold": 600,
+        "bold": 700
+      },
+      "usage": "Headings, titles, hero text, slide headers"
+    },
+    "body": {
+      "family": "Inter",
+      "fallback": "ui-sans-serif, system-ui, -apple-system, sans-serif",
+      "weight": {
+        "regular": 400,
+        "medium": 500,
+        "semibold": 600
+      },
+      "usage": "Body text, paragraphs, descriptions, captions"
+    },
+    "mono": {
+      "family": "JetBrains Mono",
+      "fallback": "ui-monospace, SFMono-Regular, Menlo, Consolas, monospace",
+      "weight": {
+        "regular": 400,
+        "medium": 500
+      },
+      "usage": "Code blocks, inline code, technical labels, data tables"
+    }
+  },
+  "scale": {
+    "h1": {
+      "size": "2.5rem",
+      "size_px": 40,
+      "line_height": 1.2,
+      "font": "display",
+      "weight": 700,
+      "letter_spacing": "-0.02em"
+    },
+    "h2": {
+      "size": "2rem",
+      "size_px": 32,
+      "line_height": 1.25,
+      "font": "display",
+      "weight": 700,
+      "letter_spacing": "-0.01em"
+    },
+    "h3": {
+      "size": "1.5rem",
+      "size_px": 24,
+      "line_height": 1.3,
+      "font": "display",
+      "weight": 600,
+      "letter_spacing": "0"
+    },
+    "h4": {
+      "size": "1.25rem",
+      "size_px": 20,
+      "line_height": 1.35,
+      "font": "display",
+      "weight": 600,
+      "letter_spacing": "0"
+    },
+    "h5": {
+      "size": "1.125rem",
+      "size_px": 18,
+      "line_height": 1.4,
+      "font": "display",
+      "weight": 600,
+      "letter_spacing": "0"
+    },
+    "h6": {
+      "size": "1rem",
+      "size_px": 16,
+      "line_height": 1.4,
+      "font": "display",
+      "weight": 600,
+      "letter_spacing": "0.01em"
+    },
+    "body": {
+      "size": "1rem",
+      "size_px": 16,
+      "line_height": 1.6,
+      "font": "body",
+      "weight": 400,
+      "letter_spacing": "0"
+    },
+    "body_large": {
+      "size": "1.125rem",
+      "size_px": 18,
+      "line_height": 1.6,
+      "font": "body",
+      "weight": 400,
+      "letter_spacing": "0"
+    },
+    "small": {
+      "size": "0.875rem",
+      "size_px": 14,
+      "line_height": 1.5,
+      "font": "body",
+      "weight": 400,
+      "letter_spacing": "0.01em"
+    },
+    "caption": {
+      "size": "0.75rem",
+      "size_px": 12,
+      "line_height": 1.5,
+      "font": "body",
+      "weight": 400,
+      "letter_spacing": "0.02em"
+    },
+    "code": {
+      "size": "0.875rem",
+      "size_px": 14,
+      "line_height": 1.6,
+      "font": "mono",
+      "weight": 400,
+      "letter_spacing": "0"
+    }
+  }
+}

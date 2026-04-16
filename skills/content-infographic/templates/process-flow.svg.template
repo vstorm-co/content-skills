@@ -1,0 +1,207 @@
+# Process Flow SVG Template
+
+## Overview
+
+Template for sequential information: workflows, how-it-works diagrams, pipelines, and step-by-step processes. Supports horizontal (left-to-right) and vertical (top-to-bottom) layouts.
+
+---
+
+## Base Structure
+
+```svg
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" role="img">
+  <title>[Process Name]</title>
+  <desc>[Plain-text description: a N-step process showing how to...]</desc>
+
+  <style>
+    :root {
+      --accent: #E94560;
+      --secondary: #16213E;
+      --bg: #FFFFFF;
+      --text: #333333;
+      --muted: #888888;
+      --light-bg: #F8F9FA;
+      --font: 'Inter', -apple-system, sans-serif;
+    }
+
+    text { font-family: var(--font); }
+    .title { font-size: 28px; font-weight: 700; fill: var(--secondary); }
+    .subtitle { font-size: 16px; fill: var(--muted); }
+    .step-number { font-size: 20px; font-weight: 700; fill: white; }
+    .step-title { font-size: 18px; font-weight: 600; fill: var(--text); }
+    .step-desc { font-size: 13px; fill: var(--muted); }
+    .source { font-size: 11px; fill: var(--muted); }
+  </style>
+
+  <rect width="1200" height="800" fill="var(--bg)" />
+
+  <!-- Title -->
+  <text x="600" y="50" class="title" text-anchor="middle">[Process Title]</text>
+  <text x="600" y="78" class="subtitle" text-anchor="middle">[Brief context]</text>
+
+  <!-- Process steps go here -->
+
+  <!-- Brand Logo -->
+  <g transform="translate(1100, 740)" opacity="0.5">
+    <!-- logo-mark SVG contents -->
+  </g>
+</svg>
+```
+
+---
+
+## Horizontal Flow (3-5 Steps)
+
+Best for processes with 3-5 steps that fit on one row.
+
+```svg
+<!-- Step 1 -->
+<g transform="translate(100, 250)">
+  <!-- Step circle with number -->
+  <circle cx="100" cy="0" r="28" fill="var(--accent)" />
+  <text x="100" y="7" class="step-number" text-anchor="middle">1</text>
+
+  <!-- Step card -->
+  <rect x="20" y="45" width="160" height="120" rx="8" fill="var(--light-bg)" />
+  <text x="100" y="80" class="step-title" text-anchor="middle">[Step Title]</text>
+  <text x="100" y="105" class="step-desc" text-anchor="middle">[Line 1 of description]</text>
+  <text x="100" y="122" class="step-desc" text-anchor="middle">[Line 2 of description]</text>
+</g>
+
+<!-- Arrow 1→2 -->
+<line x1="280" y1="250" x2="340" y2="250" stroke="var(--accent)" stroke-width="2"
+      marker-end="url(#arrowhead)" />
+
+<!-- Step 2 -->
+<g transform="translate(340, 250)">
+  <circle cx="100" cy="0" r="28" fill="var(--accent)" />
+  <text x="100" y="7" class="step-number" text-anchor="middle">2</text>
+  <rect x="20" y="45" width="160" height="120" rx="8" fill="var(--light-bg)" />
+  <text x="100" y="80" class="step-title" text-anchor="middle">[Step Title]</text>
+  <text x="100" y="105" class="step-desc" text-anchor="middle">[Description]</text>
+</g>
+
+<!-- Arrow 2→3 -->
+<line x1="520" y1="250" x2="580" y2="250" stroke="var(--accent)" stroke-width="2"
+      marker-end="url(#arrowhead)" />
+
+<!-- Step 3 -->
+<g transform="translate(580, 250)">
+  <circle cx="100" cy="0" r="28" fill="var(--accent)" />
+  <text x="100" y="7" class="step-number" text-anchor="middle">3</text>
+  <rect x="20" y="45" width="160" height="120" rx="8" fill="var(--light-bg)" />
+  <text x="100" y="80" class="step-title" text-anchor="middle">[Step Title]</text>
+  <text x="100" y="105" class="step-desc" text-anchor="middle">[Description]</text>
+</g>
+
+<!-- Arrowhead marker definition -->
+<defs>
+  <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
+    <polygon points="0 0, 10 3.5, 0 7" fill="var(--accent)" />
+  </marker>
+</defs>
+```
+
+---
+
+## Vertical Flow (5-8 Steps)
+
+Best for longer processes or when step descriptions are detailed.
+
+```svg
+<!-- Step 1 -->
+<g transform="translate(200, 120)">
+  <!-- Number badge -->
+  <circle cx="0" cy="25" r="22" fill="var(--accent)" />
+  <text x="0" y="32" class="step-number" text-anchor="middle">1</text>
+
+  <!-- Content -->
+  <text x="45" y="18" class="step-title">[Step Title]</text>
+  <text x="45" y="40" class="step-desc">[Description of what happens in this step]</text>
+</g>
+
+<!-- Connector line -->
+<line x1="200" y1="167" x2="200" y2="210" stroke="var(--accent)" stroke-width="2"
+      stroke-dasharray="4,4" />
+
+<!-- Step 2 -->
+<g transform="translate(200, 210)">
+  <circle cx="0" cy="25" r="22" fill="var(--accent)" />
+  <text x="0" y="32" class="step-number" text-anchor="middle">2</text>
+  <text x="45" y="18" class="step-title">[Step Title]</text>
+  <text x="45" y="40" class="step-desc">[Description]</text>
+</g>
+
+<!-- Continue pattern for each step, incrementing y by ~90 -->
+```
+
+---
+
+## Alternating (Zigzag) Flow
+
+For processes where you want visual variety. Steps alternate left and right.
+
+```svg
+<!-- Step 1 (left-aligned) -->
+<g transform="translate(100, 150)">
+  <circle cx="30" cy="30" r="24" fill="var(--accent)" />
+  <text x="30" y="37" class="step-number" text-anchor="middle">1</text>
+  <rect x="70" y="5" width="400" height="60" rx="8" fill="var(--light-bg)" />
+  <text x="90" y="30" class="step-title">[Step Title]</text>
+  <text x="90" y="50" class="step-desc">[Description]</text>
+</g>
+
+<!-- Connector -->
+<path d="M 500,200 Q 600,230 700,200" stroke="var(--accent)" stroke-width="2"
+      fill="none" stroke-dasharray="4,4" />
+
+<!-- Step 2 (right-aligned) -->
+<g transform="translate(630, 250)">
+  <rect x="0" y="5" width="400" height="60" rx="8" fill="var(--light-bg)" />
+  <text x="20" y="30" class="step-title">[Step Title]</text>
+  <text x="20" y="50" class="step-desc">[Description]</text>
+  <circle cx="430" cy="30" r="24" fill="var(--accent)" />
+  <text x="430" y="37" class="step-number" text-anchor="middle">2</text>
+</g>
+```
+
+---
+
+## Timeline Variant
+
+For processes tied to dates or milestones:
+
+```svg
+<!-- Horizontal timeline axis -->
+<line x1="100" y1="400" x2="1100" y2="400" stroke="var(--muted)" stroke-width="2" />
+
+<!-- Milestone 1 -->
+<g transform="translate(200, 400)">
+  <circle cx="0" cy="0" r="10" fill="var(--accent)" />
+  <text x="0" y="-25" class="step-title" text-anchor="middle">[Event]</text>
+  <text x="0" y="-45" class="step-desc" text-anchor="middle">[Date]</text>
+  <text x="0" y="30" class="step-desc" text-anchor="middle">[Details]</text>
+</g>
+
+<!-- Milestone 2 -->
+<g transform="translate(450, 400)">
+  <circle cx="0" cy="0" r="10" fill="var(--accent)" />
+  <text x="0" y="-25" class="step-title" text-anchor="middle">[Event]</text>
+  <text x="0" y="-45" class="step-desc" text-anchor="middle">[Date]</text>
+  <text x="0" y="30" class="step-desc" text-anchor="middle">[Details]</text>
+</g>
+
+<!-- Continue for each milestone, spaced evenly along the axis -->
+```
+
+---
+
+## Guidance
+
+- Choose horizontal flow for simple processes (3-5 steps) in wide formats.
+- Choose vertical flow for detailed processes (5-8 steps) or narrow formats.
+- Always flow left-to-right or top-to-bottom. Never reverse direction.
+- Keep step descriptions to 1-2 lines. If more detail is needed, add a sub-process or footnote.
+- Use consistent spacing between steps.
+- Highlight the most critical step with a larger card or brighter color.
+- Include the arrowhead `<defs>` marker when using arrows.

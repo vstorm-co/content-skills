@@ -1,0 +1,187 @@
+# Stat Card SVG Template
+
+## Overview
+
+Template for single key metrics: hero numbers, KPI highlights, and social media stat cards. One number, one context line, maximum impact.
+
+---
+
+## Base Structure
+
+```svg
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400" role="img">
+  <title>[Metric Name]: [Value]</title>
+  <desc>[Plain-text: The metric is X, which represents Y]</desc>
+
+  <style>
+    :root {
+      --accent: #E94560;
+      --secondary: #16213E;
+      --bg: #FFFFFF;
+      --text: #333333;
+      --muted: #888888;
+      --font: 'Inter', -apple-system, sans-serif;
+    }
+
+    text { font-family: var(--font); }
+    .big-number { font-size: 96px; font-weight: 800; fill: var(--accent); }
+    .metric-label { font-size: 22px; font-weight: 600; fill: var(--text); }
+    .context { font-size: 15px; fill: var(--muted); }
+    .trend-up { fill: #2ECC71; }
+    .trend-down { fill: #E74C3C; }
+    .source { font-size: 11px; fill: var(--muted); }
+  </style>
+
+  <rect width="600" height="400" fill="var(--bg)" rx="12" />
+
+  <!-- Content goes here -->
+
+  <!-- Brand Logo -->
+  <g transform="translate(540, 360)" opacity="0.4">
+    <!-- logo-mark -->
+  </g>
+</svg>
+```
+
+---
+
+## Centered Stat Card
+
+The simplest and most impactful layout:
+
+```svg
+<!-- Big number -->
+<text x="300" y="180" class="big-number" text-anchor="middle">47%</text>
+
+<!-- Label -->
+<text x="300" y="225" class="metric-label" text-anchor="middle">Reduction in Deploy Time</text>
+
+<!-- Context -->
+<text x="300" y="260" class="context" text-anchor="middle">Down from 4.2 hours to 2.2 hours average</text>
+
+<!-- Source -->
+<text x="300" y="375" class="source" text-anchor="middle">Source: Internal metrics, Q3 2025</text>
+```
+
+---
+
+## Stat Card with Trend Indicator
+
+Add an up/down arrow to show direction:
+
+```svg
+<!-- Big number -->
+<text x="300" y="170" class="big-number" text-anchor="middle">$2.4M</text>
+
+<!-- Trend indicator (up arrow + percentage) -->
+<g transform="translate(240, 195)">
+  <polygon points="8,0 16,12 0,12" class="trend-up" />
+  <text x="24" y="12" font-size="16" font-weight="600" class="trend-up">+18% MoM</text>
+</g>
+
+<!-- Label -->
+<text x="300" y="240" class="metric-label" text-anchor="middle">Monthly Recurring Revenue</text>
+
+<!-- Context -->
+<text x="300" y="270" class="context" text-anchor="middle">Crossed $2M milestone in September</text>
+```
+
+For a downward trend:
+```svg
+<g transform="translate(240, 195)">
+  <polygon points="0,0 16,0 8,12" class="trend-down" />
+  <text x="24" y="12" font-size="16" font-weight="600" class="trend-down">-5% MoM</text>
+</g>
+```
+
+---
+
+## Stat Card with Progress Ring
+
+For metrics that represent progress toward a goal:
+
+```svg
+<!-- Background ring -->
+<circle cx="300" cy="180" r="100" fill="none" stroke="var(--muted)" stroke-width="12"
+        opacity="0.2" />
+
+<!-- Progress ring (75% = 471 of 628 circumference) -->
+<circle cx="300" cy="180" r="100" fill="none" stroke="var(--accent)" stroke-width="12"
+        stroke-dasharray="471 628" stroke-dashoffset="0" stroke-linecap="round"
+        transform="rotate(-90, 300, 180)" />
+
+<!-- Number inside ring -->
+<text x="300" y="175" font-size="48" font-weight="800" fill="var(--accent)"
+      text-anchor="middle" font-family="var(--font)">75%</text>
+<text x="300" y="205" class="context" text-anchor="middle">of goal</text>
+
+<!-- Label below -->
+<text x="300" y="320" class="metric-label" text-anchor="middle">Annual Revenue Target</text>
+<text x="300" y="350" class="context" text-anchor="middle">$7.5M of $10M target reached</text>
+```
+
+**Calculating stroke-dasharray**: `circumference = 2 * pi * r = 2 * 3.14159 * 100 = 628`. For 75%: `628 * 0.75 = 471`.
+
+---
+
+## Stat Card with Comparison
+
+Show current value versus a benchmark:
+
+```svg
+<!-- Current value (large) -->
+<text x="300" y="160" class="big-number" text-anchor="middle">4.8s</text>
+<text x="300" y="195" class="metric-label" text-anchor="middle">Average Page Load</text>
+
+<!-- Comparison line -->
+<line x1="150" y1="230" x2="450" y2="230" stroke="var(--muted)" stroke-width="1" />
+
+<!-- Benchmark (smaller, muted) -->
+<text x="300" y="270" font-size="14" fill="var(--muted)" text-anchor="middle"
+      font-family="var(--font)">Industry average: 8.2s</text>
+<text x="300" y="295" font-size="14" fill="var(--accent)" text-anchor="middle"
+      font-family="var(--font)" font-weight="600">41% faster than industry</text>
+```
+
+---
+
+## Social Media Variant (1080x1080)
+
+For Instagram, LinkedIn, and other square-format platforms:
+
+```svg
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 1080" role="img">
+  <title>[Metric]</title>
+  <desc>[Description]</desc>
+
+  <style>
+    /* Same variables as above, adjusted sizes */
+    .big-number { font-size: 160px; font-weight: 800; fill: var(--accent); }
+    .metric-label { font-size: 36px; font-weight: 600; fill: var(--text); }
+    .context { font-size: 24px; fill: var(--muted); }
+  </style>
+
+  <rect width="1080" height="1080" fill="var(--bg)" />
+
+  <!-- Centered content with more vertical space -->
+  <text x="540" y="430" class="big-number" text-anchor="middle">[Number]</text>
+  <text x="540" y="500" class="metric-label" text-anchor="middle">[Label]</text>
+  <text x="540" y="550" class="context" text-anchor="middle">[Context]</text>
+
+  <!-- Brand logo -->
+  <g transform="translate(980, 1000)" opacity="0.5">
+    <!-- logo-mark -->
+  </g>
+</svg>
+```
+
+---
+
+## Guidance
+
+- The number must be the most visually dominant element. If it does not immediately grab attention, make it larger.
+- Use one stat per card. Multiple stats dilute impact. For 3-4 stats, use the metric grid pattern from the data-viz template.
+- Round numbers for impact: "~$2.4M" reads better than "$2,387,421.33".
+- Include context that makes the number meaningful: "up from 32% last quarter" or "2x industry average."
+- Choose the viewBox based on output context: 600x400 for blog embeds, 1080x1080 for social, 400x300 for dashboard cards.
+- For dark backgrounds, invert: set `--bg` to a dark color and `--text` to white.

@@ -1,0 +1,426 @@
+// Talking Head Template (1-10 minutes)
+// Landscape format (1920x1080) optimized for interviews, commentary, thought leadership
+// Structure: Intro Card -> Speaker with Lower Third -> Topic Segments -> Outro
+
+import React from "react";
+import {
+  AbsoluteFill,
+  Sequence,
+  Series,
+  useCurrentFrame,
+  useVideoConfig,
+  spring,
+  interpolate,
+  Img,
+  staticFile,
+  OffthreadVideo,
+} from "remotion";
+import { theme } from "../theme";
+
+// -- Props Interface --
+
+interface TopicSegment {
+  title: string;
+  duration: number; // in seconds
+}
+
+interface TalkingHeadProps {
+  speakerName: string;
+  speakerTitle: string;
+  videoTitle: string;
+  topics: TopicSegment[];
+  brandColor?: string;
+  logoSrc?: string;
+  speakerPhotoSrc?: string;
+}
+
+// -- Scene Components --
+
+const IntroCard: React.FC<{
+  videoTitle: string;
+  speakerName: string;
+  speakerTitle: string;
+  brandColor: string;
+  logoSrc?: string;
+  speakerPhotoSrc?: string;
+}> = ({ videoTitle, speakerName, speakerTitle, brandColor, logoSrc, speakerPhotoSrc }) => {
+  const frame = useCurrentFrame();
+  const { fps, width } = useVideoConfig();
+
+  const logoFade = spring({ frame, fps, config: { damping: 15 } });
+  const titleSlide = spring({ frame: frame - 10, fps, config: { damping: 12 } });
+  const speakerFade = spring({ frame: frame - 25, fps, config: { damping: 12 } });
+
+  return (
+    <AbsoluteFill
+      style={{
+        backgroundColor: theme.colors.background,
+        justifyContent: "center",
+        alignItems: "center",
+        padding: 120,
+      }}
+    >
+      {/* Logo */}
+      {logoSrc && (
+        <Img
+          src={staticFile(logoSrc)}
+          style={{
+            width: 48,
+            height: 48,
+            marginBottom: 40,
+            opacity: logoFade,
+          }}
+        />
+      )}
+
+      {/* Video title */}
+      <h1
+        style={{
+          fontSize: width * 0.035,
+          fontFamily: theme.fonts.heading,
+          fontWeight: 800,
+          color: theme.colors.text,
+          textAlign: "center",
+          margin: 0,
+          opacity: titleSlide,
+          transform: `translateY(${(1 - titleSlide) * 20}px)`,
+        }}
+      >
+        {videoTitle}
+      </h1>
+
+      {/* Divider */}
+      <div
+        style={{
+          width: 60,
+          height: 3,
+          backgroundColor: brandColor,
+          margin: "32px 0",
+          opacity: speakerFade,
+        }}
+      />
+
+      {/* Speaker info */}
+      <div
+        style={{
+          display: "flex",
+          alignItems: "center",
+          gap: 20,
+          opacity: speakerFade,
+          transform: `translateY(${(1 - speakerFade) * 15}px)`,
+        }}
+      >
+        {speakerPhotoSrc && (
+          <Img
+            src={staticFile(speakerPhotoSrc)}
+            style={{
+              width: 56,
+              height: 56,
+              borderRadius: 28,
+              objectFit: "cover",
+            }}
+          />
+        )}
+        <div>
+          <div
+            style={{
+              fontSize: width * 0.018,
+              fontFamily: theme.fonts.body,
+              fontWeight: 600,
+              color: theme.colors.text,
+            }}
+          >
+            {speakerName}
+          </div>
+          <div
+            style={{
+              fontSize: width * 0.013,
+              fontFamily: theme.fonts.body,
+              color: theme.colors.textMuted,
+            }}
+          >
+            {speakerTitle}
+          </div>
+        </div>
+      </div>
+    </AbsoluteFill>
+  );
+};
+
+const LowerThird: React.FC<{
+  name: string;
+  title: string;
+  brandColor: string;
+}> = ({ name, title, brandColor }) => {
+  const frame = useCurrentFrame();
+  const { fps, width, durationInFrames } = useVideoConfig();
+
+  // Animate in
+  const slideIn = spring({ frame, fps, config: { damping: 15 } });
+  // Animate out near the end
+  const slideOut = spring({
+    frame: frame - (durationInFrames - 20),
+    fps,
+    config: { damping: 15 },
+  });
+  const exitOpacity = interpolate(slideOut, [0, 1], [1, 0]);
+
+  const barWidth = interpolate(slideIn, [0, 1], [0, 280]);
+
+  return (
+    <div
+      style={{
+        position: "absolute",
+        bottom: 80,
+        left: 60,
+        opacity: slideIn * exitOpacity,
+      }}
+    >
+      {/* Color bar */}
+      <div
+        style={{
+          width: barWidth,
+          height: 3,
+          backgroundColor: brandColor,
+          marginBottom: 10,
+          borderRadius: 2,
+        }}
+      />
+
+      {/* Name */}
+      <div
+        style={{
+          fontSize: width * 0.02,
+          fontFamily: theme.fonts.heading,
+          fontWeight: 700,
+          color: theme.colors.text,
+          transform: `translateX(${(1 - slideIn) * -30}px)`,
+        }}
+      >
+        {name}
+      </div>
+
+      {/* Title */}
+      <div
+        style={{
+          fontSize: width * 0.013,
+          fontFamily: theme.fonts.body,
+          color: theme.colors.textMuted,
+          marginTop: 4,
+          transform: `translateX(${(1 - slideIn) * -30}px)`,
+        }}
+      >
+        {title}
+      </div>
+    </div>
+  );
+};
+
+const TopicOverlay: React.FC<{
+  title: string;
+  brandColor: string;
+}> = ({ title, brandColor }) => {
+  const frame = useCurrentFrame();
+  const { fps, width } = useVideoConfig();
+
+  const slideIn = spring({ frame, fps, config: { damping: 12, stiffness: 200 } });
+  const fadeAway = interpolate(frame, [60, 90], [1, 0], {
+    extrapolateLeft: "clamp",
+    extrapolateRight: "clamp",
+  });
+
+  return (
+    <div
+      style={{
+        position: "absolute",
+        top: 60,
+        right: 60,
+        opacity: slideIn * fadeAway,
+        transform: `translateX(${(1 - slideIn) * 40}px)`,
+      }}
+    >
+      <div
+        style={{
+          backgroundColor: `${brandColor}DD`,
+          padding: "12px 28px",
+          borderRadius: 8,
+          fontSize: width * 0.016,
+          fontFamily: theme.fonts.heading,
+          fontWeight: 700,
+          color: theme.colors.text,
+        }}
+      >
+        {title}
+      </div>
+    </div>
+  );
+};
+
+const SpeakerView: React.FC<{
+  speakerName: string;
+  speakerTitle: string;
+  topicTitle: string;
+  brandColor: string;
+  showLowerThird: boolean;
+}> = ({ speakerName, speakerTitle, topicTitle, brandColor, showLowerThird }) => {
+  return (
+    <AbsoluteFill style={{ backgroundColor: theme.colors.background }}>
+      {/* Placeholder for camera feed / speaker footage */}
+      <div
+        style={{
+          position: "absolute",
+          inset: 0,
+          backgroundColor: theme.colors.surface,
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          fontSize: 24,
+          color: theme.colors.textMuted,
+          fontFamily: theme.fonts.body,
+        }}
+      >
+        [Speaker Camera Feed]
+      </div>
+
+      {/* Topic overlay (appears briefly at start of each segment) */}
+      <TopicOverlay title={topicTitle} brandColor={brandColor} />
+
+      {/* Lower third */}
+      {showLowerThird && (
+        <LowerThird name={speakerName} title={speakerTitle} brandColor={brandColor} />
+      )}
+    </AbsoluteFill>
+  );
+};
+
+const NameCard: React.FC<{
+  name: string;
+  title: string;
+  brandColor: string;
+  speakerPhotoSrc?: string;
+}> = ({ name, title, brandColor, speakerPhotoSrc }) => {
+  const frame = useCurrentFrame();
+  const { fps, width } = useVideoConfig();
+
+  const fadeIn = spring({ frame, fps, config: { damping: 15 } });
+
+  return (
+    <AbsoluteFill
+      style={{
+        backgroundColor: theme.colors.background,
+        justifyContent: "center",
+        alignItems: "center",
+      }}
+    >
+      {speakerPhotoSrc && (
+        <Img
+          src={staticFile(speakerPhotoSrc)}
+          style={{
+            width: 120,
+            height: 120,
+            borderRadius: 60,
+            objectFit: "cover",
+            marginBottom: 24,
+            opacity: fadeIn,
+            border: `3px solid ${brandColor}`,
+          }}
+        />
+      )}
+
+      <div
+        style={{
+          fontSize: width * 0.028,
+          fontFamily: theme.fonts.heading,
+          fontWeight: 700,
+          color: theme.colors.text,
+          opacity: fadeIn,
+        }}
+      >
+        {name}
+      </div>
+
+      <div
+        style={{
+          fontSize: width * 0.016,
+          fontFamily: theme.fonts.body,
+          color: brandColor,
+          marginTop: 8,
+          opacity: fadeIn,
+        }}
+      >
+        {title}
+      </div>
+    </AbsoluteFill>
+  );
+};
+
+// -- Main Composition --
+
+export const TalkingHead: React.FC<TalkingHeadProps> = ({
+  speakerName,
+  speakerTitle,
+  videoTitle,
+  topics,
+  brandColor = theme.colors.primary,
+  logoSrc,
+  speakerPhotoSrc,
+}) => {
+  const { fps } = useVideoConfig();
+
+  const introDuration = fps * 4;
+  const nameCardDuration = fps * 3;
+  const outroDuration = fps * 4;
+
+  return (
+    <AbsoluteFill style={{ backgroundColor: theme.colors.background }}>
+      <Series>
+        {/* Intro card */}
+        <Series.Sequence durationInFrames={introDuration}>
+          <IntroCard
+            videoTitle={videoTitle}
+            speakerName={speakerName}
+            speakerTitle={speakerTitle}
+            brandColor={brandColor}
+            logoSrc={logoSrc}
+            speakerPhotoSrc={speakerPhotoSrc}
+          />
+        </Series.Sequence>
+
+        {/* Speaker name card */}
+        <Series.Sequence durationInFrames={nameCardDuration}>
+          <NameCard
+            name={speakerName}
+            title={speakerTitle}
+            brandColor={brandColor}
+            speakerPhotoSrc={speakerPhotoSrc}
+          />
+        </Series.Sequence>
+
+        {/* Topic segments */}
+        {topics.map((topic, i) => (
+          <Series.Sequence key={i} durationInFrames={fps * topic.duration}>
+            <SpeakerView
+              speakerName={speakerName}
+              speakerTitle={speakerTitle}
+              topicTitle={topic.title}
+              brandColor={brandColor}
+              showLowerThird={i === 0} // lower third on first segment only
+            />
+          </Series.Sequence>
+        ))}
+
+        {/* Outro */}
+        <Series.Sequence durationInFrames={outroDuration}>
+          <IntroCard
+            videoTitle="Thanks for watching"
+            speakerName={speakerName}
+            speakerTitle={speakerTitle}
+            brandColor={brandColor}
+            logoSrc={logoSrc}
+            speakerPhotoSrc={speakerPhotoSrc}
+          />
+        </Series.Sequence>
+      </Series>
+    </AbsoluteFill>
+  );
+};

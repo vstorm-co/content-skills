@@ -1,0 +1,283 @@
+// Social Short Template (15-60 seconds)
+// Vertical format (1080x1920) optimized for TikTok, Reels, X clips, LinkedIn shorts
+// Structure: Hook -> Problem -> Solution -> CTA
+
+import React from "react";
+import {
+  AbsoluteFill,
+  Sequence,
+  Series,
+  useCurrentFrame,
+  useVideoConfig,
+  spring,
+  interpolate,
+  Easing,
+  Img,
+  staticFile,
+} from "remotion";
+import { theme } from "../theme";
+
+// -- Props Interface --
+
+interface SocialShortProps {
+  hookText: string;
+  problemText: string;
+  solutionText: string;
+  ctaText: string;
+  brandColor?: string;
+  brandFont?: string;
+  logoSrc?: string;
+  durationSeconds?: number;
+}
+
+// -- Scene Components --
+
+const HookScene: React.FC<{ text: string; brandColor: string }> = ({
+  text,
+  brandColor,
+}) => {
+  const frame = useCurrentFrame();
+  const { fps, width } = useVideoConfig();
+
+  const titleSpring = spring({
+    frame,
+    fps,
+    config: { damping: 12, stiffness: 200, mass: 0.5 },
+  });
+
+  const accentWidth = interpolate(frame, [10, 30], [0, width * 0.6], {
+    extrapolateLeft: "clamp",
+    extrapolateRight: "clamp",
+  });
+
+  return (
+    <AbsoluteFill
+      style={{
+        backgroundColor: theme.colors.background,
+        justifyContent: "center",
+        alignItems: "center",
+        padding: 60,
+      }}
+    >
+      {/* Accent line */}
+      <div
+        style={{
+          width: accentWidth,
+          height: 4,
+          backgroundColor: brandColor,
+          marginBottom: 32,
+          borderRadius: 2,
+        }}
+      />
+
+      {/* Hook text */}
+      <div
+        style={{
+          fontSize: width * 0.07,
+          fontFamily: theme.fonts.heading,
+          fontWeight: 800,
+          color: theme.colors.text,
+          textAlign: "center",
+          lineHeight: 1.2,
+          opacity: titleSpring,
+          transform: `scale(${0.8 + titleSpring * 0.2})`,
+        }}
+      >
+        {text}
+      </div>
+    </AbsoluteFill>
+  );
+};
+
+const ContentScene: React.FC<{
+  text: string;
+  label: string;
+  brandColor: string;
+}> = ({ text, label, brandColor }) => {
+  const frame = useCurrentFrame();
+  const { fps, width } = useVideoConfig();
+
+  const slideIn = spring({
+    frame,
+    fps,
+    config: { damping: 15, stiffness: 150 },
+  });
+
+  return (
+    <AbsoluteFill
+      style={{
+        backgroundColor: theme.colors.background,
+        justifyContent: "center",
+        alignItems: "center",
+        padding: 60,
+      }}
+    >
+      {/* Label badge */}
+      <div
+        style={{
+          backgroundColor: brandColor,
+          color: theme.colors.text,
+          fontSize: width * 0.03,
+          fontFamily: theme.fonts.body,
+          fontWeight: 600,
+          padding: "8px 20px",
+          borderRadius: 20,
+          marginBottom: 24,
+          opacity: slideIn,
+          textTransform: "uppercase",
+          letterSpacing: 2,
+        }}
+      >
+        {label}
+      </div>
+
+      {/* Main text */}
+      <div
+        style={{
+          fontSize: width * 0.055,
+          fontFamily: theme.fonts.body,
+          fontWeight: 600,
+          color: theme.colors.text,
+          textAlign: "center",
+          lineHeight: 1.4,
+          opacity: slideIn,
+          transform: `translateY(${(1 - slideIn) * 40}px)`,
+        }}
+      >
+        {text}
+      </div>
+    </AbsoluteFill>
+  );
+};
+
+const CTAScene: React.FC<{
+  text: string;
+  brandColor: string;
+  logoSrc?: string;
+}> = ({ text, brandColor, logoSrc }) => {
+  const frame = useCurrentFrame();
+  const { fps, width } = useVideoConfig();
+
+  const pop = spring({
+    frame,
+    fps,
+    config: { damping: 8, stiffness: 200, mass: 0.8 },
+  });
+
+  const pulse = Math.sin(frame * 0.15) * 0.03 + 1;
+
+  return (
+    <AbsoluteFill
+      style={{
+        backgroundColor: theme.colors.background,
+        justifyContent: "center",
+        alignItems: "center",
+        padding: 60,
+      }}
+    >
+      {/* Logo */}
+      {logoSrc && (
+        <Img
+          src={staticFile(logoSrc)}
+          style={{
+            width: 80,
+            height: 80,
+            marginBottom: 32,
+            opacity: pop,
+          }}
+        />
+      )}
+
+      {/* CTA text */}
+      <div
+        style={{
+          fontSize: width * 0.06,
+          fontFamily: theme.fonts.heading,
+          fontWeight: 800,
+          color: theme.colors.text,
+          textAlign: "center",
+          opacity: pop,
+          transform: `scale(${pop * pulse})`,
+        }}
+      >
+        {text}
+      </div>
+
+      {/* CTA button shape */}
+      <div
+        style={{
+          marginTop: 32,
+          padding: "16px 48px",
+          backgroundColor: brandColor,
+          borderRadius: 30,
+          opacity: pop,
+          transform: `scale(${pop})`,
+        }}
+      >
+        <span
+          style={{
+            fontSize: width * 0.035,
+            fontFamily: theme.fonts.body,
+            fontWeight: 700,
+            color: theme.colors.text,
+          }}
+        >
+          Learn More
+        </span>
+      </div>
+    </AbsoluteFill>
+  );
+};
+
+// -- Main Composition --
+
+export const SocialShort: React.FC<SocialShortProps> = ({
+  hookText,
+  problemText,
+  solutionText,
+  ctaText,
+  brandColor = theme.colors.primary,
+  logoSrc,
+}) => {
+  const { fps } = useVideoConfig();
+
+  // Scene durations (adjust based on total video length)
+  const hookDuration = fps * 4;       // 4 seconds
+  const problemDuration = fps * 6;    // 6 seconds
+  const solutionDuration = fps * 6;   // 6 seconds
+  const ctaDuration = fps * 4;        // 4 seconds
+
+  return (
+    <AbsoluteFill style={{ backgroundColor: theme.colors.background }}>
+      <Series>
+        <Series.Sequence durationInFrames={hookDuration}>
+          <HookScene text={hookText} brandColor={brandColor} />
+        </Series.Sequence>
+
+        <Series.Sequence durationInFrames={problemDuration}>
+          <ContentScene
+            text={problemText}
+            label="The Problem"
+            brandColor={brandColor}
+          />
+        </Series.Sequence>
+
+        <Series.Sequence durationInFrames={solutionDuration}>
+          <ContentScene
+            text={solutionText}
+            label="The Solution"
+            brandColor={brandColor}
+          />
+        </Series.Sequence>
+
+        <Series.Sequence durationInFrames={ctaDuration}>
+          <CTAScene
+            text={ctaText}
+            brandColor={brandColor}
+            logoSrc={logoSrc}
+          />
+        </Series.Sequence>
+      </Series>
+    </AbsoluteFill>
+  );
+};

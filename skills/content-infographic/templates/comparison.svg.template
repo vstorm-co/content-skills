@@ -1,0 +1,207 @@
+# Comparison SVG Template
+
+## Overview
+
+Template for side-by-side evaluations: versus layouts, feature matrices, pros/cons, and before/after comparisons.
+
+---
+
+## Base Structure
+
+```svg
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" role="img">
+  <title>[Comparison Title]</title>
+  <desc>[Plain-text: comparison of A and B across N criteria]</desc>
+
+  <style>
+    :root {
+      --accent: #E94560;
+      --secondary: #16213E;
+      --bg: #FFFFFF;
+      --text: #333333;
+      --muted: #888888;
+      --positive: #2ECC71;
+      --negative: #E74C3C;
+      --neutral: #95A5A6;
+      --light-bg: #F8F9FA;
+      --font: 'Inter', -apple-system, sans-serif;
+    }
+
+    text { font-family: var(--font); }
+    .title { font-size: 28px; font-weight: 700; fill: var(--secondary); }
+    .subtitle { font-size: 16px; fill: var(--muted); }
+    .option-name { font-size: 24px; font-weight: 700; }
+    .criterion { font-size: 15px; fill: var(--text); }
+    .detail { font-size: 13px; fill: var(--muted); }
+    .source { font-size: 11px; fill: var(--muted); }
+  </style>
+
+  <rect width="1200" height="800" fill="var(--bg)" />
+
+  <!-- Title -->
+  <text x="600" y="50" class="title" text-anchor="middle">[Option A] vs [Option B]</text>
+  <text x="600" y="78" class="subtitle" text-anchor="middle">[Context for the comparison]</text>
+
+  <!-- Comparison content goes here -->
+
+  <!-- Brand Logo -->
+  <g transform="translate(1100, 740)" opacity="0.5">
+    <!-- logo-mark -->
+  </g>
+</svg>
+```
+
+---
+
+## Side-by-Side (Two Columns)
+
+Classic A vs. B layout with a divider:
+
+```svg
+<!-- Left column header: Option A -->
+<rect x="50" y="110" width="520" height="60" rx="8" fill="var(--accent)" />
+<text x="310" y="148" class="option-name" text-anchor="middle" fill="white">[Option A]</text>
+
+<!-- Right column header: Option B -->
+<rect x="630" y="110" width="520" height="60" rx="8" fill="var(--secondary)" />
+<text x="890" y="148" class="option-name" text-anchor="middle" fill="white">[Option B]</text>
+
+<!-- Divider -->
+<line x1="600" y1="110" x2="600" y2="720" stroke="var(--muted)" stroke-width="1"
+      stroke-dasharray="4,4" />
+
+<!-- Row 1 -->
+<text x="310" y="220" class="criterion" text-anchor="middle">[A's value for criterion 1]</text>
+<text x="600" y="205" class="detail" text-anchor="middle" font-weight="600">[Criterion 1]</text>
+<text x="890" y="220" class="criterion" text-anchor="middle">[B's value for criterion 1]</text>
+<line x1="80" y1="240" x2="1120" y2="240" stroke="var(--light-bg)" stroke-width="1" />
+
+<!-- Row 2 -->
+<text x="310" y="280" class="criterion" text-anchor="middle">[A's value for criterion 2]</text>
+<text x="600" y="265" class="detail" text-anchor="middle" font-weight="600">[Criterion 2]</text>
+<text x="890" y="280" class="criterion" text-anchor="middle">[B's value for criterion 2]</text>
+<line x1="80" y1="300" x2="1120" y2="300" stroke="var(--light-bg)" stroke-width="1" />
+
+<!-- Continue rows, spacing each ~60px apart -->
+```
+
+---
+
+## Pros and Cons
+
+Two-column layout with positive/negative indicators:
+
+```svg
+<!-- Left: Pros -->
+<rect x="50" y="110" width="520" height="60" rx="8" fill="var(--positive)" opacity="0.15" />
+<text x="310" y="148" class="option-name" text-anchor="middle" fill="var(--positive)">Pros</text>
+
+<!-- Right: Cons -->
+<rect x="630" y="110" width="520" height="60" rx="8" fill="var(--negative)" opacity="0.15" />
+<text x="890" y="148" class="option-name" text-anchor="middle" fill="var(--negative)">Cons</text>
+
+<!-- Pro item 1 -->
+<g transform="translate(80, 200)">
+  <circle cx="0" cy="0" r="8" fill="var(--positive)" />
+  <text x="20" y="5" class="criterion">[Pro point 1]</text>
+</g>
+
+<!-- Pro item 2 -->
+<g transform="translate(80, 250)">
+  <circle cx="0" cy="0" r="8" fill="var(--positive)" />
+  <text x="20" y="5" class="criterion">[Pro point 2]</text>
+</g>
+
+<!-- Con item 1 -->
+<g transform="translate(660, 200)">
+  <circle cx="0" cy="0" r="8" fill="var(--negative)" />
+  <text x="20" y="5" class="criterion">[Con point 1]</text>
+</g>
+
+<!-- Con item 2 -->
+<g transform="translate(660, 250)">
+  <circle cx="0" cy="0" r="8" fill="var(--negative)" />
+  <text x="20" y="5" class="criterion">[Con point 2]</text>
+</g>
+```
+
+---
+
+## Feature Matrix
+
+For comparing 3+ options across multiple features:
+
+```svg
+<!-- Column headers -->
+<text x="350" y="140" class="option-name" text-anchor="middle" font-size="18"
+      fill="var(--accent)">[Option A]</text>
+<text x="600" y="140" class="option-name" text-anchor="middle" font-size="18"
+      fill="var(--secondary)">[Option B]</text>
+<text x="850" y="140" class="option-name" text-anchor="middle" font-size="18"
+      fill="var(--muted)">[Option C]</text>
+
+<!-- Header underline -->
+<line x1="250" y1="155" x2="950" y2="155" stroke="var(--muted)" stroke-width="1" />
+
+<!-- Row 1 -->
+<text x="120" y="200" class="criterion">[Feature 1]</text>
+<!-- Check (has feature) -->
+<circle cx="350" cy="195" r="10" fill="var(--positive)" />
+<text x="350" y="200" text-anchor="middle" fill="white" font-size="14" font-weight="700">&#10003;</text>
+<!-- Check -->
+<circle cx="600" cy="195" r="10" fill="var(--positive)" />
+<text x="600" y="200" text-anchor="middle" fill="white" font-size="14" font-weight="700">&#10003;</text>
+<!-- X (missing feature) -->
+<circle cx="850" cy="195" r="10" fill="var(--neutral)" />
+<text x="850" y="200" text-anchor="middle" fill="white" font-size="14" font-weight="700">&#10007;</text>
+
+<line x1="80" y1="220" x2="1000" y2="220" stroke="var(--light-bg)" stroke-width="1" />
+
+<!-- Continue rows, spacing ~50px -->
+```
+
+---
+
+## Before/After
+
+Split-screen showing transformation:
+
+```svg
+<!-- Before panel -->
+<rect x="50" y="120" width="520" height="550" rx="12" fill="var(--light-bg)" />
+<text x="310" y="160" class="option-name" text-anchor="middle"
+      fill="var(--muted)">Before</text>
+<!-- Before content: screenshot placeholder, description, or data -->
+<rect x="80" y="190" width="460" height="260" rx="8" fill="white" stroke="var(--muted)"
+      stroke-width="1" />
+<text x="310" y="330" class="detail" text-anchor="middle">[Screenshot or illustration]</text>
+<text x="310" y="500" class="criterion" text-anchor="middle">[Key metric before]</text>
+<text x="310" y="530" class="detail" text-anchor="middle">[Context]</text>
+
+<!-- Arrow between panels -->
+<g transform="translate(585, 400)">
+  <polygon points="0,-20 30,0 0,20" fill="var(--accent)" />
+</g>
+
+<!-- After panel -->
+<rect x="630" y="120" width="520" height="550" rx="12" fill="var(--accent)" opacity="0.05" />
+<text x="890" y="160" class="option-name" text-anchor="middle"
+      fill="var(--accent)">After</text>
+<rect x="660" y="190" width="460" height="260" rx="8" fill="white"
+      stroke="var(--accent)" stroke-width="1" />
+<text x="890" y="330" class="detail" text-anchor="middle">[Screenshot or illustration]</text>
+<text x="890" y="500" class="criterion" text-anchor="middle"
+      fill="var(--accent)">[Key metric after]</text>
+<text x="890" y="530" class="detail" text-anchor="middle">[Context showing improvement]</text>
+```
+
+---
+
+## Guidance
+
+- Give equal visual weight to both sides unless the infographic is designed to argue for one option.
+- Use color intentionally: accent for the recommended option, neutral for the other.
+- Keep the same criteria in the same order on both sides.
+- For feature matrices with more than 5 rows, group related features under sub-headers.
+- For pros/cons, aim for balanced counts on each side (3-5 each). If one side dominates, the comparison feels rigged.
+- Include a clear verdict or recommendation below the comparison if the purpose is to guide a decision.

@@ -1,0 +1,133 @@
+# Campaign Plan: [Campaign Name]
+
+## Campaign Overview
+
+| Field | Detail |
+|---|---|
+| **Campaign name** | [Name] |
+| **Theme** | [Central theme or message] |
+| **Goal** | [What this campaign is trying to achieve] |
+| **Duration** | [Start date] - [End date] ([X] weeks) |
+| **Target audience** | [Primary audience segment] |
+| **Key message** | [One sentence the audience should remember] |
+| **Success metrics** | [How you will measure success] |
+
+---
+
+## Campaign Phases
+
+### Phase 1: Teaser / Build-Up ([Date Range])
+
+**Objective**: Generate curiosity and awareness before the main content drops.
+
+| Date | Platform | Format | Content | Owner | Status |
+|---|---|---|---|---|---|
+| [Date] | X | Tweet | Cryptic teaser / question that hints at the topic | [Name] | idea |
+| [Date] | LinkedIn | Text post | Industry problem statement that the campaign will address | [Name] | idea |
+| [Date] | X | Tweet | Behind-the-scenes hint or stat | [Name] | idea |
+| [Date] | Newsletter | Mention | Brief teaser in the regular newsletter | [Name] | idea |
+
+**Talking points**: [Key messages for this phase]
+**Tone**: Curious, hinting, building anticipation
+
+---
+
+### Phase 2: Launch ([Date Range])
+
+**Objective**: Publish the main content piece(s) and drive initial engagement.
+
+| Date | Platform | Format | Content | Owner | Status |
+|---|---|---|---|---|---|
+| [Date] | Blog | [Format] | Main anchor content piece | [Name] | idea |
+| [Date] | X | Thread | Key insights from the anchor piece | [Name] | idea |
+| [Date] | LinkedIn | Long post | Professional angle on the same topic | [Name] | idea |
+| [Date] | Newsletter | Feature | Dedicated issue or section about the launch | [Name] | idea |
+| [Date] | Reddit | Post | Community-relevant framing of the content | [Name] | idea |
+| [Date] | YouTube | Video | Visual version (explainer, demo, or commentary) | [Name] | idea |
+
+**Talking points**: [Key messages for this phase]
+**Tone**: Confident, informative, generous with value
+
+---
+
+### Phase 3: Amplification ([Date Range])
+
+**Objective**: Extend the campaign's reach through repurposing, engagement, and social proof.
+
+| Date | Platform | Format | Content | Owner | Status |
+|---|---|---|---|---|---|
+| [Date] | X | Tweet | Highlight a specific insight or data point from the anchor | [Name] | idea |
+| [Date] | LinkedIn | Carousel/Doc | Visual summary of key findings | [Name] | idea |
+| [Date] | X | Quote tweet | Respond to engagement / add commentary | [Name] | idea |
+| [Date] | X | Tweet | Social proof (shares, comments, results if available) | [Name] | idea |
+| [Date] | LinkedIn | Text post | Personal reflection or lesson from creating the content | [Name] | idea |
+| [Date] | Blog | Follow-up | FAQ, deeper dive on one subtopic, or response to reactions | [Name] | idea |
+
+**Talking points**: [Key messages for this phase]
+**Tone**: Conversational, responsive, building on momentum
+
+---
+
+### Phase 4: Wrap-Up ([Date Range])
+
+**Objective**: Close the campaign with a summary, results, and bridge to next content.
+
+| Date | Platform | Format | Content | Owner | Status |
+|---|---|---|---|---|---|
+| [Date] | Newsletter | Recap | Campaign results and key takeaways | [Name] | idea |
+| [Date] | X | Thread | "What we learned" or results thread | [Name] | idea |
+| [Date] | LinkedIn | Text post | Reflection on the campaign's impact | [Name] | idea |
+
+**Talking points**: [Key messages for this phase]
+**Tone**: Reflective, grateful, forward-looking
+
+---
+
+## Content Inventory
+
+| # | Content Piece | Platform | Format | Phase | Status | Dependencies |
+|---|---|---|---|---|---|---|
+| 1 | [Piece name] | Blog | [Format] | Launch | idea | None |
+| 2 | [Piece name] | X | Thread | Launch | idea | Depends on #1 |
+| 3 | [Piece name] | LinkedIn | Text post | Launch | idea | None |
+| 4 | [Piece name] | Newsletter | Feature | Launch | idea | Depends on #1 |
+| 5 | [Piece name] | X | Tweet series | Amplify | idea | Depends on #1 |
+| ... | ... | ... | ... | ... | ... | ... |
+
+**Total content pieces**: [Number]
+**Estimated production time**: [Hours/days]
+
+---
+
+## Distribution Channels
+
+| Channel | Action | Timing |
+|---|---|---|
+| Email list | Dedicated send or newsletter feature | Launch day |
+| Social organic | Posts on owned accounts | Throughout campaign |
+| Community | Reddit, Discord, Slack communities | Launch + 1 day |
+| Outreach | DM or email to potential amplifiers | Launch day |
+| Paid (if applicable) | Social ads, newsletter sponsorships | Amplification phase |
+
+---
+
+## Risk Mitigation
+
+| Risk | Mitigation |
+|---|---|
+| Main piece is not ready by launch date | Build 3-day buffer into the production schedule |
+| Low initial engagement | Have amplification content ready; do not panic and change message |
+| Negative reception or pushback | Prepare thoughtful response talking points in advance |
+| Competitor publishes similar content first | Focus on unique angle; reference their piece and differentiate |
+
+---
+
+## Post-Campaign Review
+
+After the campaign ends, document:
+
+- [ ] What worked well?
+- [ ] What underperformed expectations?
+- [ ] Which platforms drove the most engagement?
+- [ ] What would you do differently next time?
+- [ ] What content from this campaign can be evergreen / repurposed?

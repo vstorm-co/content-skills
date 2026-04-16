@@ -1,0 +1,92 @@
+{
+  "_description": "Default color palettes for content-skills. Overridden by brand/VISUAL.md when it exists. Each palette provides a complete set of colors for content generation.",
+  "palettes": {
+    "neutral": {
+      "name": "Neutral",
+      "description": "Clean, professional palette with grays and a subtle blue accent. Works for any industry.",
+      "colors": {
+        "primary": "#1a1a2e",
+        "secondary": "#4a4a6a",
+        "accent": "#3a86ff",
+        "text_dark": "#1a1a1a",
+        "text_light": "#f5f5f5",
+        "background": "#ffffff",
+        "surface": "#f8f9fa",
+        "border": "#e2e2e2"
+      }
+    },
+    "warm": {
+      "name": "Warm",
+      "description": "Earthy, approachable palette with terracotta and amber tones. Good for lifestyle, food, wellness brands.",
+      "colors": {
+        "primary": "#c24d2c",
+        "secondary": "#d4a574",
+        "accent": "#e8b931",
+        "text_dark": "#2d1810",
+        "text_light": "#faf5f0",
+        "background": "#fdf8f3",
+        "surface": "#f5ebe0",
+        "border": "#dcc9b6"
+      }
+    },
+    "cool": {
+      "name": "Cool",
+      "description": "Modern, tech-oriented palette with deep blues and teals. Good for SaaS, developer tools, fintech.",
+      "colors": {
+        "primary": "#0f3460",
+        "secondary": "#16213e",
+        "accent": "#00b4d8",
+        "text_dark": "#0a0a23",
+        "text_light": "#e8f4f8",
+        "background": "#f0f7fa",
+        "surface": "#e1ecf4",
+        "border": "#b8d4e3"
+      }
+    },
+    "bold": {
+      "name": "Bold",
+      "description": "High-contrast, energetic palette with vivid colors. Good for startups, creative agencies, marketing.",
+      "colors": {
+        "primary": "#6c2bd9",
+        "secondary": "#1a1a2e",
+        "accent": "#ff6b35",
+        "text_dark": "#111111",
+        "text_light": "#fafafa",
+        "background": "#ffffff",
+        "surface": "#f3f0ff",
+        "border": "#d4c5f9"
+      }
+    },
+    "muted": {
+      "name": "Muted",
+      "description": "Soft, understated palette with desaturated tones. Good for editorial, luxury, finance brands.",
+      "colors": {
+        "primary": "#5c6378",
+        "secondary": "#8b95a5",
+        "accent": "#7c9885",
+        "text_dark": "#2c2c3a",
+        "text_light": "#f2f2f2",
+        "background": "#fafafa",
+        "surface": "#f0f0f0",
+        "border": "#d8d8d8"
+      }
+    }
+  },
+  "dark_mode_overrides": {
+    "_note": "When generating dark-mode content, swap background/surface and text_dark/text_light, then adjust for contrast.",
+    "neutral": {
+      "background": "#0a0a0a",
+      "surface": "#1a1a2e",
+      "text_dark": "#f5f5f5",
+      "text_light": "#1a1a1a",
+      "border": "#2a2a3e"
+    },
+    "cool": {
+      "background": "#0a0a23",
+      "surface": "#16213e",
+      "text_dark": "#e8f4f8",
+      "text_light": "#0a0a23",
+      "border": "#1e3a5f"
+    }
+  }
+}

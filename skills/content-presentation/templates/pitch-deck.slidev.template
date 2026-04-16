@@ -1,0 +1,142 @@
+# Investor Pitch Deck Template (Slidev)
+
+## Format: 10-15 slides | Framework: Slidev | Duration: 10-20 minutes
+
+---
+
+## Narrative Arc
+
+This deck follows the classic fundraising arc: establish the opportunity, prove you can capture it, show traction, ask for money. Every slide earns the right to show the next one.
+
+---
+
+## Slide Structure
+
+### Slide 1: Title
+**Layout**: `cover`
+**Content**: Company name, one-line description (not a tagline -- what you actually do), presenter name, date.
+**Speaker Notes**: Introduce yourself in one sentence. Do not read the slide. Establish energy.
+
+```markdown
+---
+layout: cover
+background: /images/brand-bg.jpg
+---
+
+# [Company Name]
+
+[One sentence: what you do for whom]
+
+**[Your Name]** | [Date]
+```
+
+---
+
+### Slide 2: The Problem
+**Layout**: `default`
+**Content**: Describe the pain your customer feels. Use their words, not yours. Be specific -- a scenario, not an abstraction.
+**Speaker Notes**: Tell a short story. "Imagine you're [persona] and you need to [task]. Today, you have to [painful process]." Make the audience feel the pain.
+
+**Anti-pattern**: Do not list 3-5 generic industry problems. Pick the one that matters most and make it vivid.
+
+---
+
+### Slide 3: The Cost of the Problem
+**Layout**: `fact`
+**Content**: One big number that quantifies the pain. Market size, money wasted, time lost, failure rate.
+**Speaker Notes**: Let the number land. Pause after showing it. Then contextualize: "That's [comparison that makes it tangible]."
+
+---
+
+### Slide 4: The Solution
+**Layout**: `default` or `image-right`
+**Content**: What you built, in one sentence. Then a screenshot, diagram, or demo video embed. Show, do not describe.
+**Speaker Notes**: This is your product moment. Walk through what the user sees. If you can do a live demo, do it here.
+
+**Anti-pattern**: Do not list features. Show the product solving the problem from Slide 2.
+
+---
+
+### Slide 5: Why Now
+**Layout**: `default`
+**Content**: What changed in the world that makes this possible and urgent today? Technology shift, regulation change, behavior change, market timing.
+**Speaker Notes**: Investors fund timing as much as teams. Explain why this company could not have existed 3 years ago and why waiting 3 more years means missing the window.
+
+---
+
+### Slide 6: How It Works
+**Layout**: `two-cols` or `default`
+**Content**: 3-step process or architecture diagram. Keep it simple enough that a non-technical investor can follow.
+**Speaker Notes**: Walk through each step. Mention the technical moat briefly but do not get lost in implementation.
+
+---
+
+### Slide 7: Traction
+**Layout**: `default`
+**Content**: Metrics that prove demand. Revenue, users, growth rate, retention, pipeline, LOIs, partnerships. Use a chart if you have time-series data.
+**Speaker Notes**: Lead with the most impressive metric. If early stage, show velocity (growth rate) over absolute numbers. If pre-revenue, show engagement or waitlist.
+
+---
+
+### Slide 8: Business Model
+**Layout**: `default`
+**Content**: How you make money. Pricing model, unit economics (CAC, LTV, margins), revenue per customer.
+**Speaker Notes**: Keep it simple. "[Customer type] pays [$X] per [unit] for [value]. Our gross margin is [Y%]." If you have cohort data, mention retention.
+
+---
+
+### Slide 9: Market Size
+**Layout**: `default`
+**Content**: TAM/SAM/SOM with clear methodology. Bottom-up preferred over top-down. Do not cite a generic analyst report and claim 1% of a trillion-dollar market.
+**Speaker Notes**: Explain how you calculated SAM. "There are [X] companies in [segment] spending [$Y] on [category]. Our SAM is [X * Y]." Be credible.
+
+---
+
+### Slide 10: Competition
+**Layout**: `two-cols` or `default`
+**Content**: Competitive landscape. Not a feature matrix (you always win those). Position on 2 axes that show your unique advantage.
+**Speaker Notes**: Acknowledge competitors honestly. Name them. Explain your defensible advantage: "They optimize for [X]. We optimize for [Y] because our customers need [Y] more."
+
+---
+
+### Slide 11: Team
+**Layout**: `default`
+**Content**: 2-4 key people. Name, role, one-line credential that explains why this person is uniquely qualified to build this company.
+**Speaker Notes**: Highlight founder-market fit. "We built this because [personal connection to the problem]."
+
+---
+
+### Slide 12: Financials
+**Layout**: `default`
+**Content**: Revenue projections (3 years), key assumptions, path to profitability. A simple chart, not a spreadsheet.
+**Speaker Notes**: Walk through assumptions, not numbers. "If we grow customers at [X%] monthly and maintain [Y%] margins, we reach [$Z] ARR in 24 months."
+
+---
+
+### Slide 13: The Ask
+**Layout**: `center`
+**Content**: How much you are raising, what it funds, and the milestones it enables. "Raising $[X]M to [achieve Y] by [date]."
+**Speaker Notes**: Be specific about use of funds. "60% engineering (ship [feature]), 25% sales (reach [number] customers), 15% ops." State the milestone this round buys: "This gets us to [metric] which sets up our Series [X]."
+
+---
+
+### Slide 14: Vision (Optional)
+**Layout**: `center` or `cover`
+**Content**: Where this goes in 5-10 years. The big picture. One bold sentence.
+**Speaker Notes**: Paint the picture briefly. Do not oversell. End with confidence, not hype.
+
+---
+
+### Slide 15: Close
+**Layout**: `end`
+**Content**: Company name, your email, the ask restated in one line.
+**Speaker Notes**: "I'd love to continue this conversation. The best way to reach me is [email]. Thank you."
+
+---
+
+## Usage
+
+1. Copy this structure into `slides.md`.
+2. Replace bracketed placeholders with real content.
+3. Add brand styles via `style.css` (see `brand-integration.md`).
+4. Run `npx slidev slides.md` to preview.
