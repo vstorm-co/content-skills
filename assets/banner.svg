@@ -28,34 +28,34 @@
     <circle cx="28" cy="14" r="3" fill="#24201a"/>
     <circle cx="40" cy="14" r="3" fill="#24201a"/>
     <!-- slash-command glyph -->
-    <text x="48" y="70" font-family="'SF Mono','JetBrains Mono','Fira Code',monospace" font-size="48" font-weight="700" fill="url(#accent)" text-anchor="middle" letter-spacing="-1">/</text>
+    <text x="48" y="70" font-family="monospace" font-size="54" font-weight="700" fill="url(#accent)" text-anchor="middle">/</text>
   </g>
 
   <!-- Title -->
-  <text x="200" y="160" font-family="'Inter','SF Pro Display',system-ui,-apple-system,sans-serif" font-size="52" font-weight="800" fill="url(#title)" letter-spacing="-1.5">
+  <text x="200" y="158" font-family="sans-serif" font-size="50" font-weight="700" fill="url(#title)">
     content-skills
   </text>
 
   <!-- Subtitle -->
-  <text x="200" y="198" font-family="'Inter',system-ui,-apple-system,sans-serif" font-size="19" fill="#d6d3d1" letter-spacing="-0.2">
+  <text x="200" y="196" font-family="sans-serif" font-size="19" fill="#d6d3d1">
     A content studio with YOUR brand baked in.
   </text>
 
   <!-- Compatibility / topic line -->
-  <g transform="translate(200, 232)" font-family="'SF Mono','JetBrains Mono',monospace" font-size="12" font-weight="600" letter-spacing="1.5">
+  <g transform="translate(200, 232)" font-family="monospace" font-size="13" font-weight="700">
     <text x="0" y="0" fill="#a8a29e">BLOG</text>
-    <text x="46" y="0" fill="#78716c">·</text>
-    <text x="62" y="0" fill="#a8a29e">SOCIAL</text>
-    <text x="130" y="0" fill="#78716c">·</text>
-    <text x="146" y="0" fill="#a8a29e">SLIDES</text>
-    <text x="218" y="0" fill="#78716c">·</text>
-    <text x="234" y="0" fill="#a8a29e">VIDEO</text>
-    <text x="294" y="0" fill="#78716c">·</text>
-    <text x="310" y="0" fill="#a8a29e">ANTI-SLOP</text>
+    <text x="58" y="0" fill="#78716c">·</text>
+    <text x="74" y="0" fill="#a8a29e">SOCIAL</text>
+    <text x="160" y="0" fill="#78716c">·</text>
+    <text x="176" y="0" fill="#a8a29e">SLIDES</text>
+    <text x="258" y="0" fill="#78716c">·</text>
+    <text x="274" y="0" fill="#a8a29e">VIDEO</text>
+    <text x="342" y="0" fill="#78716c">·</text>
+    <text x="358" y="0" fill="#a8a29e">ANTI-SLOP</text>
   </g>
 
   <!-- Bottom footer -->
-  <g transform="translate(72, 288)" font-family="'Inter',system-ui,sans-serif" font-size="12" fill="#a8a29e">
+  <g transform="translate(72, 288)" font-family="sans-serif" font-size="13" fill="#a8a29e">
     <text x="0" y="0">by Vstorm  ·  vstorm.co</text>
     <text x="1056" y="0" text-anchor="end" fill="#a8a29e">Claude Code  ·  Codex  ·  AGENTS.md</text>
   </g>
